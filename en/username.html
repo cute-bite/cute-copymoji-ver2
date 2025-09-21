@@ -1,0 +1,812 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>ID Generator for Instagram, Twitter (X), Google — Cute CopyMoji🌸</title>
+  <meta name="description" content="Generate Instagram, Twitter (X), Google-friendly usernames and decorated nicknames. Type a keyword; tap to copy.">
+
+  <link rel="canonical" href="https://cutecopymoji.com/en/username.html" />
+
+  <!-- Favicon / App icons -->
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <!-- Theme colors -->
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#121212" media="(prefers-color-scheme: dark)">
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Cute CopyMoji🌸">
+  <meta property="og:title" content="ID Generator — Cute CopyMoji🌸">
+  <meta property="og:description" content="Type a word; get username ideas or decorated nicknames. Tap to copy.">
+  <meta property="og:url" content="https://cutecopymoji.com/en/username.html">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://cutecopymoji.com/og.png">
+  <meta property="og:image:alt" content="Cute CopyMoji🌸">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="ID Generator — Cute CopyMoji🌸">
+  <meta name="twitter:description" content="Generate & decorate usernames. Tap to copy.">
+  <meta name="twitter:image" content="https://cutecopymoji.com/og.png">
+
+  <!-- Styles / Scripts -->
+  <link rel="stylesheet" href="../assets/core.css?v=4">
+  <script src="../assets/core.js" defer></script>
+
+
+  <!-- Hreflang (7) -->
+<link rel="alternate" hreflang="x-default" href="https://cutecopymoji.com/en/username.html" />
+<link rel="alternate" hreflang="en" href="https://cutecopymoji.com/en/username.html" />
+<link rel="alternate" hreflang="ko" href="https://cutecopymoji.com/ko/username.html" />
+<link rel="alternate" hreflang="ja" href="https://cutecopymoji.com/ja/username.html" />
+<link rel="alternate" hreflang="es" href="https://cutecopymoji.com/es/username.html" />
+<link rel="alternate" hreflang="pt" href="https://cutecopymoji.com/pt/username.html" />
+<link rel="alternate" hreflang="fr" href="https://cutecopymoji.com/fr/username.html" />
+<link rel="alternate" hreflang="de" href="https://cutecopymoji.com/de/username.html" />
+
+
+  <!-- AdSense (loader once per page) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4324510515730355" crossorigin="anonymous"></script>
+
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <style>
+    /* Toast theme tokens (works with existing palette) */
+    :root{
+      --toast-bg: var(--accent);      /* fall back to accent color */
+      --toast-fg: var(--chrome);      /* readable on accent */
+    }
+    html[data-theme="dark"]{
+      --toast-bg: var(--accent);
+      --toast-fg: #fff;
+    }
+
+    /* === Kaomoji area (no big outer border) === */
+    .kao-wrap{ margin:14px 0 0; }
+    .kao-head{ margin:0 0 6px; }
+    .kao-title{
+      margin:0;
+      font-size:clamp(16px, 2vw, 18px);
+      line-height:1.25;
+      font-weight:700;
+    }
+    .kao-desc{ margin:4px 0 var(--kao-gap-bottom); color:var(--text-muted); font-size:clamp(12px, 1.6vw, 13px) }
+
+    /* Grid — add 4-col mobile */
+    #grid{ display:grid; gap:10px; align-items:start; grid-template-columns:repeat(2,1fr); }
+    @media(min-width:400px){ #grid{ grid-template-columns:repeat(3,1fr);} }
+    @media(min-width:480px){ #grid{ grid-template-columns:repeat(4,1fr);} } /* NEW: 4-col mobile */
+    @media(min-width:768px){ #grid{ grid-template-columns:repeat(5,1fr);} }
+    @media(min-width:1024px){ #grid{ grid-template-columns:repeat(6,1fr);} }
+    @media(min-width:1200px){ #grid{ grid-template-columns:repeat(7,1fr);} }
+
+    .emo-card{
+      position:relative;
+      display:flex;align-items:center;justify-content:center; /* center kaomoji */
+      min-height:88px;padding:10px 12px;border-radius:12px;
+      background:var(--card);border:1px solid var(--border);box-shadow:var(--shadow);
+      cursor:pointer;
+    }
+    .emo-card.is-fav{ outline:2px solid var(--accent); }
+    .emo-t{ font-size:clamp(13px, 1.6vw, 14px); line-height:1.2;text-align:center;white-space:pre-wrap;word-break:break-word; }
+    .fav-btn{
+      position:absolute; top:6px; right:6px; /* pin top-right */
+      font-size:12px; padding:2px 6px; line-height:1;
+      border-radius:10px; border:1px solid var(--border); background:var(--chip);
+      cursor:pointer;
+    }
+
+    .empty{display:none;text-align:center;padding:16px;color:#666}
+    .infeed{margin:12px 0}
+    .infeed ins.adsbygoogle{display:block}
+    .morebar{margin-top:10px;text-align:center}
+    .morebar button{height:34px;padding:0 14px;border-radius:10px;border:1px solid var(--border);background:var(--chip);cursor:pointer}
+
+    /* Toast (theme aware) */
+    .toast{ position:fixed; left:50%; bottom:18px; transform:translateX(-50%);
+      background:var(--toast-bg); color:var(--toast-fg);
+      padding:8px 12px; border-radius:10px; border:1px solid var(--border);
+      font-size:13px; line-height:1; opacity:0; pointer-events:none; transition:opacity .2s ease; z-index:9999; }
+    .toast.show{ opacity:1; }
+
+    /* Quick access — trim inner bottom gap */
+    .quick-wrap{ margin:18px 0 24px; padding-bottom:0; } /* add bottom space under Quick access */
+    .quick{ margin-bottom:0; padding-bottom:0; }
+      .after-quick{ margin-top:20px; }
+    /* spacing under Quick access + above its ads */
+    .quick-wrap{ margin-bottom:24px; }
+    .after-quick{ margin-top:20px; }
+
+    /* === Remove *internal* bottom space inside Quick access grid === */
+    .quick-wrap{ padding-bottom:0 !important; }
+    .quick{ margin-bottom:0 !important; padding-bottom:12px !important; }
+    .quick > *:last-child{ margin-bottom:0 !important; }
+    .quick::after{ content:none !important; }
+
+
+    /* Quick access: use one shared gap for top & bottom spacing INSIDE the table */
+    .quick-wrap{ --quick-gap: 10px; }
+    .quick-head{ margin-bottom: var(--quick-gap) !important; }
+    .quick{ padding-bottom: var(--quick-gap) !important; margin-bottom: 0 !important; }
+
+
+    /* Quick access internal spacing override: larger bottom gap */
+    .quick-wrap{ --quick-gap-top: 10px; --quick-gap-bottom: 20px; }
+    .quick-head{ margin-bottom: var(--quick-gap-top) !important; }
+    .quick{ padding-bottom: var(--quick-gap-bottom) !important; margin-bottom: 0 !important; }
+
+
+    /* === Quick access spacing: match index === */
+    .quick-wrap{ padding:12px !important; }
+    .quick{ margin-bottom:28px !important; padding-bottom:0 !important; }
+
+    .kao-wrap{ --kao-gap-bottom: 16px; }
+
+    /* === Dark-mode visibility fixes (requested) === */
+    html[data-theme="dark"] .morebar button{
+      color:#fff !important;
+      background: var(--chip, #1f1f1f);
+      border-color: var(--border, #333);
+    }
+    html[data-theme="dark"] .fav-btn.is-active{
+      color:#fff !important; /* pressed star = white */
+      background: var(--chip, #1f1f1f);
+      border-color: var(--border, #333);
+    }
+
+
+    /* Tighten space under the LAST infeed ad before the footer */
+    main .infeed:last-child{ margin-bottom: 6px !important; }
+    /* If footer has big top padding, keep it modest on this page only */
+    footer .f-inner{ padding-top: 12px; }
+
+
+    /* === Align ad/footer spacing with index === */
+    .after-quick{ margin-top: 0 !important; } /* no extra gap above ad */
+    main .infeed:last-child{ margin-bottom: 16px !important; } /* match core default */
+
+
+    /* === ID Generator tweaks === */
+    .chips .chip{
+      display:inline-flex;align-items:center;height:28px;padding:0 10px;border-radius:999px;
+      border:1px solid var(--border);background:var(--chip);cursor:pointer;user-select:none;font-size:12px;white-space:nowrap;
+    }
+    .chips .chip.is-active{ background:var(--accent-weak, rgba(0,0,0,.06)); border-color: var(--accent, #888); }
+    html[data-theme="dark"] .chips .chip.is-active{ background:rgba(255,255,255,.08); border-color: var(--accent, #ccc); }
+
+    .emo-card{ min-height:72px; }
+    .emo-t{ font-size: clamp(12px, 1.6vw, 14px); line-height:1.2; white-space:normal; word-break:break-word; }
+
+    /* Decorated nicknames can be longer; allow wrap */
+    .decor .emo-t{ font-size: clamp(12px, 1.6vw, 14px); white-space:pre-wrap; word-break:break-word; }
+
+    /* Dark-mode: ensure Shuffle / chips readable */
+    html[data-theme="dark"] .chip{ color:#fff; }
+
+
+    /* === Shuffle button: cohesive style === */
+    #shuffleBtn{ 
+      height:34px; padding:0 12px; border-radius:10px; 
+      border:1px solid var(--border); background:var(--chip); 
+      display:inline-flex; align-items:center; gap:6px; font-weight:600;
+      box-shadow: var(--shadow); transition: transform .1s ease, box-shadow .1s ease;
+    }
+    #shuffleBtn::before{ content:none; }
+    #shuffleBtn:hover{ transform: translateY(-0.5px); box-shadow: 0 2px 6px rgba(0,0,0,.08); }
+    html[data-theme="dark"] #shuffleBtn{ color:#fff; background: var(--chip, #1f1f1f); border-color: var(--border, #333); }
+
+    /* === ID grid: mobile 2 cols → desktop 6 cols === */
+    #grid{ grid-template-columns: repeat(2, 1fr) !important; }
+    @media(min-width:1024px){
+      #grid{ grid-template-columns: repeat(6, 1fr) !important; }
+    }
+
+
+    /* === Shuffle button: cohesive chip style === */
+    #shuffleBtn{
+      height:34px;padding:0 12px;border-radius:10px;
+      border:1px solid var(--border);background:var(--chip);
+      display:inline-flex;align-items:center;gap:6px;font-weight:600;
+      box-shadow:var(--shadow);transition:transform .1s ease, box-shadow .1s ease;
+    }
+    #shuffleBtn::before{ content:none; }
+    #shuffleBtn:hover{ transform:translateY(-0.5px); box-shadow:0 2px 6px rgba(0,0,0,.08); }
+    html[data-theme="dark"] #shuffleBtn{ color:#fff;background:var(--chip,#1f1f1f);border-color:var(--border,#333); }
+
+
+    /* === Shuffle font weight: normal === */
+    #shuffleBtn{ font-weight: 400 !important; }
+
+
+    /* Mobile: keep input + Shuffle on the same row */
+@media (max-width: 767px){
+  #baseInput{
+    flex: 0 1 200px;  /* 기본 폭 더 축소 */
+    min-width: 140px;
+    max-width: 220px;
+  }
+  .toolrow .actions{ flex: 0 0 auto; }     /* 셔플 버튼은 줄바꿈 방지 */
+  #filters{ flex-basis: 100%; margin-top: 6px; } /* 필터는 다음 줄로 내려 안정화 */
+}
+
+
+</style>
+  <script src="../assets/username-decor.js"></script>
+</head>
+<body>
+  <header>
+    <div class="wrap h-inner">
+      <a href="./index.html" class="brand" aria-label="Home">Cute CopyMoji</a>
+      <button class="hamburger" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false"
+              onclick="(function(btn){document.body.classList.toggle('menu-open');btn.setAttribute('aria-expanded',document.body.classList.contains('menu-open'));})(this)">☰</button>
+      <nav class="nav desktop-nav" role="navigation" aria-label="Primary">
+        <a href="./kaomoji.html">Kaomoji</a>
+        <a href="./line.html">Line</a>
+        <a href="./replace.html">Text Replace</a>
+        <a href="./emoji.html">Emoji</a>
+        <a href="./dotart.html">Dot/ASCII</a>
+        <a href="./fonts.html">Fonts</a>
+        <a href="./username.html" aria-current="page">ID Generator</a>
+        <a href="./favorites.html">Favorites</a>
+        <a href="./settings.html">Settings</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="./index.html" class="home-link"><span>Home</span></a>
+    <a href="./kaomoji.html"><span>Kaomoji</span></a>
+    <a href="./line.html"><span>Line</span></a>
+    <a href="./replace.html"><span>Text Replace</span></a>
+    <a href="./emoji.html"><span>Emoji</span></a>
+    <a href="./dotart.html"><span>Dot/ASCII</span></a>
+    <a href="./fonts.html"><span>Fonts</span></a>
+    <a href="./username.html"><span>ID Generator</span></a>
+    <a href="./favorites.html"><span>Favorites</span></a>
+    <a href="./settings.html"><span>Settings</span></a>
+  </div>
+
+  <div class="backdrop" onclick="document.body.classList.remove('menu-open');document.querySelector('.hamburger')?.setAttribute('aria-expanded','false')"></div>
+
+  <main class="wrap">
+    <!-- Kaomoji area (no .panel) -->
+    <section class="kao-wrap" aria-labelledby="kaoTitle">
+      <div class="kao-head">
+        <h1 id="kaoTitle" class="kao-title">ID Generator</h1>
+        <p class="kao-desc">Generate cute & cool usernames. Type a keyword; filter by platform or try the Nickname Decorator. Tap to copy.</p>
+      </div>
+
+      
+      <div class="toolrow" style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:8px 0 10px">
+        <label class="sr-only" for="baseInput">Keyword</label>
+        <input id="baseInput" type="search" placeholder="Type a word to include in your username (e.g., mint, cat, nova)" 
+               style="flex:0 1 210px;min-width:140px;height:34px;padding:0 10px;border-radius:10px;border:1px solid var(--border);background:var(--chip);max-width:240px">
+        <div class="actions" style="display:flex;gap:6px;align-items:center;align-items:center"><button id="shuffleBtn" class="chip" type="button">Shuffle</button></div>
+        <div id="filters" class="chips" style="display:flex;gap:6px;flex-wrap:wrap;margin-top:0;display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-left:8px">
+          <button class="chip" data-tab="all" type="button">All</button>
+          <button class="chip" data-tab="instagram" type="button">Instagram</button>
+          <button class="chip" data-tab="twitter" type="button">Twitter (X)</button>
+          <button class="chip" data-tab="google" type="button">Google & more</button>
+          <button class="chip" data-tab="decor" type="button">Nickname Decorator</button>
+        </div>
+      </div>
+
+      <section id="grid" aria-live="polite"></section>
+      <div id="empty" class="empty">No items.</div>
+
+      <div class="morebar"><button id="loadMoreBtn" type="button">Load more</button></div>
+
+      <!-- Ad block after kaomoji content -->
+      <div class="infeed" aria-label="Sponsored" style="grid-column:1 / -1">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-4324510515730355"
+             data-ad-slot="9132817506"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+      </div>
+
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+    </section>
+
+    <!-- Quick access (no ads inside; inner bottom gap removed above) -->
+    <section class="quick-wrap" aria-labelledby="quickTitle">
+  <div class="quick-head">
+    <!-- 아이콘은 .mi 스타일 재사용 (원하는 아이콘으로 교체 가능) -->
+    <svg class="mi" viewBox="0 0 24 24" aria-hidden="true">
+      <path class="fill" d="M12 2l2 4 4 .7-3 3 .7 4L12 12l-3.7 1.7.7-4-3-3L10 6z"></path>
+      <path class="stroke" d="M12 2l2 4 4 .7-3 3 .7 4L12 12l-3.7 1.7.7-4-3-3L10 6z"></path>
+    </svg>
+    <h2 id="quickTitle" style="margin:0;font:inherit">Quick access</h2>
+  </div>
+
+  
+    <!-- Quick menu -->
+
+    <section class="quick">
+    
+      <!-- Home -->
+  <a class="panel quick-item" href="./index.html" aria-current="page" style="text-align:center;padding:16px">
+    <svg class="mi big" viewBox="0 0 24 24" aria-hidden="true">
+      <path class="stroke" d="M3 10.5L12 4l9 6.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>
+    </svg>
+    <div style="margin-top:8px;font-weight:600">Home</div>
+  </a>
+
+  <!-- Kaomoji -->
+  <a class="panel quick-item" href="./kaomoji.html" style="text-align:center;padding:16px">
+    <svg class="mi big" viewBox="0 0 24 24" aria-hidden="true">
+      <circle class="stroke" cx="12" cy="12" r="8.5"/>
+      <circle class="stroke" cx="9" cy="11" r="1"/>
+      <path class="stroke" d="M14.5 11.2h1.6"/>
+      <path class="stroke" d="M8.8 15c1.6 1.2 4.8 1.2 6.4 0"/>
+    </svg>
+    <div style="margin-top:8px;font-weight:600">Kaomoji</div>
+  </a>
+
+  <!-- Line -->
+  <a class="panel quick-item" href="./line.html" style="text-align:center;padding:16px">
+    <svg class="mi big" viewBox="0 0 24 24" aria-hidden="true">
+      <path class="stroke" d="M4.5 6.5h15v8.2a3 3 0 0 1-3 3H11l-3.8 3v-3H7.5a3 3 0 0 1-3-3z"/>
+    </svg>
+    <div style="margin-top:8px;font-weight:600">Line</div>
+  </a>
+
+  <!-- Text Replace -->
+  <a class="panel quick-item" href="./replace.html" style="text-align:center;padding:16px">
+    <svg class="mi big" viewBox="0 0 24 24" aria-hidden="true">
+      <!-- A→☆ 치환 느낌 -->
+      <rect class="stroke" x="3" y="5" width="8" height="14" rx="2"/>
+      <path class="stroke" d="M5.5 15h4M7.5 9l1.5 4"/>
+      <path class="stroke" d="M13 12h8"/>
+      <path class="stroke" d="M18 7l3 3-3 3"/>
+    </svg>
+    <div style="margin-top:8px;font-weight:600">Text Replace</div>
+  </a>
+
+  <!-- Emoji -->
+  <a class="panel quick-item" href="./emoji.html" style="text-align:center;padding:16px">
+    <svg class="mi big" viewBox="0 0 24 24" aria-hidden="true">
+      <circle class="stroke" cx="12" cy="12" r="8.5"/>
+      <circle class="stroke" cx="9" cy="10" r="1"/>
+      <circle class="stroke" cx="15" cy="10" r="1"/>
+      <path class="stroke" d="M8.5 14.5c2 1.8 5 1.8 7 0"/>
+    </svg>
+    <div style="margin-top:8px;font-weight:600">Emoji</div>
+  </a>
+
+  <!-- Dot/ASCII -->
+  <a class="panel quick-item" href="./dotart.html" style="text-align:center;padding:16px">
+    <svg class="mi big" viewBox="0 0 24 24" aria-hidden="true">
+      <circle class="stroke" cx="7" cy="7" r="1.2"/><circle class="stroke" cx="12" cy="7" r="1.2"/><circle class="stroke" cx="17" cy="7" r="1.2"/>
+      <circle class="stroke" cx="7" cy="12" r="1.2"/><circle class="stroke" cx="12" cy="12" r="1.2"/><circle class="stroke" cx="17" cy="12" r="1.2"/>
+      <circle class="stroke" cx="7" cy="17" r="1.2"/><circle class="stroke" cx="12" cy="17" r="1.2"/><circle class="stroke" cx="17" cy="17" r="1.2"/>
+    </svg>
+    <div style="margin-top:8px;font-weight:600">Dot art / ASCII art</div>
+  </a>
+
+  <!-- Fonts -->
+  <a class="panel quick-item" href="./fonts.html" style="text-align:center;padding:16px">
+    <svg class="mi big" viewBox="0 0 24 24" aria-hidden="true">
+      <path class="stroke" d="M4 18h4l2-5h4l2 5h4"/>
+      <path class="stroke" d="M10 13l2-7 2 7"/>
+    </svg>
+    <div style="margin-top:8px;font-weight:600">Fonts</div>
+  </a>
+
+  <!-- ID Generator -->
+  <a class="panel quick-item" href="./username.html" style="text-align:center;padding:16px">
+    <svg class="mi big" viewBox="0 0 24 24" aria-hidden="true">
+      <rect class="stroke" x="3" y="6" width="18" height="12" rx="2"/>
+      <circle class="stroke" cx="8.5" cy="12" r="2"/>
+      <path class="stroke" d="M12.5 10h6M12.5 13h6M12.5 16h4"/>
+    </svg>
+    <div style="margin-top:8px;font-weight:600">ID Generator</div>
+  </a>
+
+  <!-- Favorites -->
+  <a class="panel quick-item" href="./favorites.html" style="text-align:center;padding:16px">
+    <svg class="mi big" viewBox="0 0 24 24" aria-hidden="true">
+      <path class="stroke" d="M12 3.5l2.4 4.9 5.4.8-3.9 3.9.9 5.5L12 16.9 7.2 18.6l.9-5.5L4.2 9.2l5.4-.8z"/>
+    </svg>
+    <div style="margin-top:8px;font-weight:600">Favorites</div>
+  </a>
+
+  <!-- Settings -->
+  <a class="panel quick-item" href="./settings.html" style="text-align:center;padding:16px">
+    <svg class="mi big" viewBox="0 0 24 24" aria-hidden="true">
+      <circle class="stroke" cx="12" cy="12" r="7.5"/>
+      <circle class="stroke" cx="12" cy="12" r="2.5"/>
+      <path class="stroke" d="M12 3.5v3M20.5 12h-3M12 20.5v-3M3.5 12h3M17.4 6.6l-2.1 2.1M17.4 17.4l-2.1-2.1M6.6 17.4l2.1-2.1M6.6 6.6l2.1 2.1"/>
+    </svg>
+    <div style="margin-top:8px;font-weight:600">Settings</div>
+  </a>
+</section>
+
+</section>
+<!-- slot_end -->
+<div class="infeed only-desktop" aria-label="Sponsored">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-4324510515730355"
+       data-ad-slot="9132817506"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+
+    <!--  모바일 전용 광고 자리 -->
+<div class="infeed only-mobile" aria-label="Sponsored">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-4324510515730355"
+       data-ad-slot="9132817506"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+  </main>
+
+  <footer>
+    <div class="wrap f-inner">
+      <nav>
+        <a href="./privacy.html">Privacy</a> · <a href="./terms.html">Terms</a> · <a href="./contact.html">Contact</a>
+      </nav>
+      <small>© 2025 Cute CopyMoji. All rights reserved.</small>
+    </div>
+  </footer>
+
+  <button onclick="window.scrollTo({top:0,behavior:'smooth'})" id="topBtn" class="fab" title="Go to top">↑</button>
+  <button onclick="if(navigator.share){navigator.share({title:'Cute CopyMoji',url:location.href});}else{navigator.clipboard&&navigator.clipboard.writeText(location.href).then(()=>alert('Link copied!'));}" id="shareBtn" class="fab" title="Share">↗</button>
+
+  <!-- Theme-color sync -->
+  <script>
+  (function(){
+    function syncThemeColor(){
+      const hex = getComputedStyle(document.documentElement).getPropertyValue('--chrome').trim() || '#ffffff';
+      let meta = document.querySelector('meta[name="theme-color"]:not([media])');
+      if(!meta){ meta = document.createElement('meta'); meta.setAttribute('name','theme-color'); document.head.appendChild(meta); }
+      meta.setAttribute('content', hex);
+    }
+    syncThemeColor();
+    document.addEventListener('change', function(e){
+      if(e.target && e.target.matches('input[name="t"][data-ccm-theme]')) setTimeout(syncThemeColor, 0);
+    });
+    window.addEventListener('DOMContentLoaded', syncThemeColor);
+  })();
+  </script>
+
+  <!-- Data --><script>
+    (function(){ try{
+      if(typeof window.DEFAULT_ITEMS === 'undefined' && typeof DEFAULT_ITEMS !== 'undefined'){
+        window.DEFAULT_ITEMS = DEFAULT_ITEMS;
+      }
+    }catch(e){} })();
+  </script>
+
+  <div id="toast" class="toast" role="status" aria-live="polite">Copied!</div>
+
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question",
+      "name": "Can I generate usernames for Instagram, Twitter (X), or Google?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. Use the platform filters to get handles that fit Instagram, Twitter (X), and Google naming rules." }
+    },
+    { "@type": "Question",
+      "name": "How do I decorate a nickname?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Switch to the Nickname Decorator tab, type a keyword, and tap any card to copy." }
+    }
+  ]
+}
+</script>
+
+
+  <script>
+  (function(){
+    const $ = (s,el=document)=>el.querySelector(s);
+    const $$ = (s,el=document)=>Array.from(el.querySelectorAll(s));
+
+    const grid = $('#grid');
+    const empty = $('#empty');
+    const input = $('#baseInput');
+    function rawToken(){
+      const raw = (input.value||'').trim().normalize('NFC');
+      return Array.from(raw).slice(0,40).join('');
+    }
+    const shuffleBtn = $('#shuffleBtn');
+    const filters = $('#filters');
+
+    // Favorites
+    const FAV_KEY = 'idgen.favs.v1';
+    function loadFavs(){ try{ return JSON.parse(localStorage.getItem(FAV_KEY)||'[]'); }catch{ return []; } }
+    function saveFavs(v){ localStorage.setItem(FAV_KEY, JSON.stringify(v)); }
+    function isFav(t){ return loadFavs().includes(t); }
+    function toggleFav(t){ const f=loadFavs(); const i=f.indexOf(t); if(i>=0)f.splice(i,1); else f.push(t); saveFavs(f); }
+
+    // Platform rules (porting/aligning with old username page)
+    const RULES = {
+      instagram: { allow: /[a-z0-9._]/, dot:true, underscore:true, max: 10 },
+      twitter:   { allow: /[a-z0-9_]/,   dot:false, underscore:true, max: 10 },
+      google:    { allow: /[a-z0-9.]/,   dot:true, underscore:false, max: 10 },
+    };
+    const CONNECTOR = { instagram:['','_','.'], twitter:['','_'], google:['','.'] };
+    const PREF = ['my','hi','its','iam','mr','ms','the','luv','mini','lil'];
+    const CORE = ['love','luv','cute','mint','bear','bun','cat','kitty','puppy','star','moon','sun','sky','berry','peach','cloud','snow','nova','pink'];
+    const SUFF = ['ie','ly','xo','x','sk','lab','dev','ai','gg','io','co','hq','pro','app','now'];
+    const NUMS = ['','0','1','2','3','7','8','9','24','99'];
+
+    let TAB = 'all';
+
+    function rand(n){ return Math.floor(Math.random()*n); }
+    function pick(arr){ return arr[rand(arr.length)]; }
+
+    function baseToken(){
+      const raw = (input.value||'').toLowerCase();
+      return raw.replace(/[^a-z0-9]/g,'').slice(0,10);
+    }
+    function leetAll(s){ return s.replace(/l/g,'1').replace(/o/g,'0'); }
+    function leetPartial(s){
+      return s.split('').map(ch=>{
+        if (ch==='l' && Math.random()<0.7) return '1';
+        if (ch==='o' && Math.random()<0.7) return '0';
+        return ch;
+      }).join('');
+    }
+    function applyRules(u){
+      const r = RULES[TAB];
+      u = u.toLowerCase().split('').filter(ch=>r.allow.test(ch)).join('');
+      u = u.replace(/^[_\.]+/, '').replace(/[_\.]+$/, '');
+      if (u.length > r.max) u = u.slice(0, r.max);
+      u = u.replace(/^[_\.]+/, '').replace(/[_\.]+$/, '');
+      return u;
+    }
+    function clipToMaxPreservingToken(s, token){
+      const max = RULES[TAB].max;
+      const idx = s.indexOf(token);
+      if (idx === -1) return s.slice(0, max);
+      const room = max - token.length;
+      const leftRoom = Math.floor(room/2), rightRoom = room - leftRoom;
+      const left = Math.max(0, idx - leftRoom);
+      const right = Math.min(s.length, idx + token.length + rightRoom);
+      let out = s.slice(left, right);
+      out = out.replace(/^[_\.]+/, '').replace(/[_\.]+$/, '');
+      return out.slice(0, max);
+    }
+    function ensureContainsToken(u, tokens){
+      const has = tokens.some(t => t && u.includes(t));
+      if (has) return u;
+      const r = RULES[TAB];
+      const c = pick(CONNECTOR[TAB]);
+      let t = pick(tokens.filter(Boolean));
+      let cand = (rand(2) ? (t + c + u) : (u + c + t));
+      cand = applyRules(cand);
+      if (cand.length > r.max) cand = clipToMaxPreservingToken(cand, t);
+      return cand;
+    }
+
+    function makeCandidates(token){
+      const tokens = [token, leetAll(token)];
+      const conn = CONNECTOR[TAB];
+      const out = new Set();
+      for (let i=0;i<600 && out.size<54;i++){
+        const t = pick([token, leetAll(token), leetPartial(token)]);
+        const p = pick(PREF), s = pick(SUFF), k = pick(CORE), c = pick(conn), n = pick(NUMS);
+        const patterns = [
+          `${p}${c}${t}${c}${s}`,
+          `${t}${c}${s}${n}`,
+          `${p}${c}${t}${n}`,
+          `${k}${c}${t}`,
+          `${t}${c}${k}`,
+          `${t}${n}`,
+          `${t}${c}${pick(['x','xx','xo','ox'])}`,
+          `${p}${c}${k}${c}${t}`,
+          `${t}${c}${pick(['ai','gg','io','co','hq'])}`,
+          `${t}${c}${pick(['pro','lab','dev','app'])}`,
+        ];
+        let cand = pick(patterns);
+        cand = applyRules(cand);
+        if (cand.length > RULES[TAB].max){
+          const keep = pick(tokens);
+          cand = clipToMaxPreservingToken(cand, keep);
+        }
+        cand = ensureContainsToken(cand, tokens);
+        cand = cand.replace(/^[_\.]+/, '').replace(/[_\.]+$/, '');
+        if (cand && cand.length>=3) out.add(cand);
+      }
+      return [...out];
+    }
+
+    // === Decorator ===
+    function decorate(token){
+      const T = Array.isArray(window.USERNAME_TEMPLATES) ? window.USERNAME_TEMPLATES.slice() : [];
+      const name = token;
+      const text = token;
+      const out = [];
+      const rxWord = /\b(text|name)\b/gi;
+      for(const tpl of T){
+        let s = String(tpl||'');
+        // Support {text}/{name} and plain tokens with word boundaries
+        s = s.replace(/\{\s*text\s*\}/ig, text).replace(/\{\s*name\s*\}/ig, name);
+        s = s.replace(rxWord, (m)=> (m.toLowerCase()==='text'?text:name));
+        out.push(s);
+      }
+      return out;
+    }
+
+    function makeCard(s, extraClass){
+      const favInit = isFav(s);
+      const card = document.createElement('div');
+      card.className = 'emo-card' + (extraClass?(' '+extraClass):'') + (favInit ? ' is-fav' : '');
+      const favBtn = document.createElement('button'); favBtn.className='fav-btn'; favBtn.type='button'; favBtn.title='favorite'; favBtn.setAttribute('aria-label','favorite');
+      favBtn.textContent = favInit ? '★' : '☆'; if(favInit) favBtn.classList.add('is-active');
+      const text = document.createElement('div'); text.className='emo-t'; text.textContent = s;
+      card.append(favBtn, text);
+
+      card.addEventListener('click', async ()=>{ try{ await navigator.clipboard.writeText(s); }catch(e){} showToast('Copied!'); });
+      favBtn.addEventListener('click', (e)=>{ e.stopPropagation(); toggleFav(s); const now=isFav(s); favBtn.textContent = now?'★':'☆'; favBtn.classList.toggle('is-active', now); card.classList.toggle('is-fav', now); });
+      return card;
+    }
+
+    function showToast(msg){
+      let t=document.getElementById('toast'); if(!t){ t=document.createElement('div'); t.id='toast'; t.className='toast'; document.body.appendChild(t); }
+      t.textContent=msg; t.classList.add('show'); clearTimeout(showToast._t); showToast._t=setTimeout(()=>t.classList.remove('show'),1000);
+    }
+
+    // Ad cadence
+    function getCols(){ const cs=getComputedStyle(grid); return cs.gridTemplateColumns.split(' ').filter(Boolean).length || 2; }
+    function cadenceFor(cols){ if(cols<=4) return 16; if(cols<=6) return 24; return 28; }
+    function makeAd(){
+      const wrap = document.createElement('div');
+      wrap.className='infeed'; wrap.style.gridColumn='1 / -1'; wrap.setAttribute('aria-label','Sponsored');
+      const ins=document.createElement('ins'); ins.className='adsbygoogle'; ins.style.display='block';
+      ins.setAttribute('data-ad-client','ca-pub-4324510515730355'); ins.setAttribute('data-ad-slot','6633850514'); ins.setAttribute('data-ad-format','auto'); ins.setAttribute('data-full-width-responsive','true');
+      wrap.appendChild(ins); try{ (window.adsbygoogle=window.adsbygoogle||[]).push({}); }catch(e){}
+      return wrap;
+    }
+
+    function render(){
+      const token = baseToken();
+      const raw = rawToken();
+      let list = [];
+      let extraClass = '';
+      if (TAB === 'decor'){
+        extraClass = 'decor';
+        list = raw ? decorate(raw) : [];
+      }
+      else if (TAB === 'all'){
+        const tabs = ['instagram','twitter','google'];
+        const savedTAB = TAB;
+        const acc = new Set();
+        for (const t of tabs){
+          TAB = t;
+          makeCandidates(token).forEach(s => acc.add(s));
+        }
+        TAB = savedTAB;
+        // add decorator outputs too (use raw for full multilingual support)
+        (raw ? decorate(raw) : []).forEach(s => acc.add(s));
+        list = Array.from(acc);
+      }
+      else{
+        list = token ? makeCandidates(token) : [];
+      }
+      grid.innerHTML='';
+      empty.style.display = list.length ? 'none':'block';
+
+      const every = cadenceFor(getCols());
+      let n = 0;
+      for(const s of list){
+        if(every && n>0 && n%every===0) grid.appendChild(makeAd());
+        grid.appendChild(makeCard(s, extraClass));
+        n++;
+      }
+      if(every && n>0 && n%every===0) grid.appendChild(makeAd());
+    }
+
+    // events
+    input.addEventListener('input', render);
+
+    document.getElementById('shuffleBtn')?.addEventListener('click', render);filters.addEventListener('click', (e)=>{
+      const btn = e.target.closest('[data-tab]'); if(!btn) return;
+      $$('.chips .chip', filters).forEach(b=>b.classList.remove('is-active'));
+      btn.classList.add('is-active');
+      TAB = btn.dataset.tab;
+      render();
+    });
+
+    // initial
+    render();
+    // ensure All chip highlighted on init
+    (function(){ const f=document.querySelector('#filters [data-tab="all"]'); if(f){ document.querySelectorAll('#filters .chip').forEach(c=>c.classList.remove('is-active')); f.classList.add('is-active'); } })();
+
+// 열 수가 실제로 바뀔 때만 렌더 (모바일 주소창 노출/숨김으로 인한 불필요 렌더 방지)
+(function(){
+  let lastCols = getCols();             // 현재 그리드 열 수 기억
+  window.addEventListener('resize', () => {
+    const now = getCols();
+    if (now !== lastCols) {             // 열 수 바뀐 경우에만
+      lastCols = now;
+      render();
+    }
+  }, { passive: true });
+})();
+
+
+  })();
+  </script>
+
+
+  <script>
+  (function(){
+    // --- override functions: baseToken, applyRules, clipToMaxPreservingToken (codepoint aware) ---
+    function cpSlice(s, n){
+      return Array.from(s).slice(0, n).join('');
+    }
+    function cpLen(s){ return Array.from(s).length; }
+
+    // Keep global references
+    const _RULES = RULES;
+
+    // Allow Unicode letters/numbers per platform, plus separators
+    _RULES.instagram = { allow: new RegExp('[\\p{L}\\p{Nd}._]', 'u'), dot:true, underscore:true, max: 10 };
+    _RULES.twitter   = { allow: new RegExp('[\\p{L}\\p{Nd}_]', 'u'),   dot:false, underscore:true, max: 10 };
+    _RULES.google    = { allow: new RegExp('[\\p{L}\\p{Nd}.]', 'u'),   dot:true, underscore:false, max: 10 };
+
+    // Base token: keep any language letters/numbers; limit by code points
+    window.baseToken = function(){
+      const raw = (document.getElementById('baseInput').value || '').trim().normalize('NFC');
+      const arr = Array.from(raw);
+      const kept = arr.filter(ch => /[\p{L}\p{Nd}]/u.test(ch));
+      return cpSlice(kept.join(''), 10);
+    };
+
+    // Apply platform rules: filter per char using Unicode regex; trim ends; limit by code points
+    window.applyRules = function(u){
+      const r = RULES[TAB];
+      let a = Array.from((u||'').toLocaleLowerCase());
+      a = a.filter(ch => r.allow.test(ch));
+      // Remove leading/trailing separators
+      while(a.length && (a[0] === '_' || a[0] === '.')) a.shift();
+      while(a.length && (a[a.length-1] === '_' || a[a.length-1] === '.')) a.pop();
+      a = a.slice(0, r.max);
+      return a.join('');
+    };
+
+    // Preserve token inside when clipping by code points
+    window.clipToMaxPreservingToken = function(s, token){
+      const max = RULES[TAB].max;
+      if (cpLen(s) <= max) return s;
+      const strArr = Array.from(s);
+      const tokArr = Array.from(token||'');
+      const tok = tokArr.join('');
+      const idx = Array.from(s).join('').indexOf(tok);
+      if (idx === -1) return cpSlice(s, max);
+      // naive center clip around token
+      const room = max - tokArr.length;
+      const leftRoom = Math.max(0, Math.floor(room/2));
+      const rightRoom = Math.max(0, room - leftRoom);
+      const left = Math.max(0, idx - leftRoom);
+      const right = Math.min(strArr.length, idx + tokArr.length + rightRoom);
+      let out = strArr.slice(left, right);
+      while(out.length && (out[0] === '_' || out[0] === '.')) out.shift();
+      while(out.length && (out[out.length-1] === '_' || out[out.length-1] === '.')) out.pop();
+      return out.slice(0, max).join('');
+    };
+  })();
+  </script>
+
+</body>
+</html>

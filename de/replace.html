@@ -1,0 +1,572 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Text ersetzen — Cute CopyMoji🌸</title>
+  <meta name="description" content="Praktische Text-Ersetzungen und Vorlagen kopieren. Tippen zum Kopieren; ★ zum Speichern in Favoriten.">
+
+ <link rel="canonical" href="https://cutecopymoji.com/de/replace.html" />
+
+  <!-- Favicon / App icons -->
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <!-- Theme colors -->
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#121212" media="(prefers-color-scheme: dark)">
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Cute CopyMoji🌸">
+  <meta property="og:title" content="Text ersetzen — Cute CopyMoji🌸">
+  <meta property="og:description" content="Zum Kopieren tippen. Mit ★ zu Favoriten hinzufügen.">
+  <meta property="og:url" content="https://cutecopymoji.com/de/replace.html">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:image" content="https://cutecopymoji.com/og.png">
+  <meta property="og:image:alt" content="Cute CopyMoji🌸">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Text ersetzen — Cute CopyMoji🌸">
+  <meta name="twitter:description" content="Tippen zum Kopieren. ★ zum Favorisieren.">
+  <meta name="twitter:image" content="https://cutecopymoji.com/og.png">
+
+  <!-- Styles / Scripts -->
+  <link rel="stylesheet" href="../assets/core.css?v=4">
+  <script src="../assets/core.js" defer></script>
+
+  <!-- Hreflang (7) -->
+<link rel="alternate" hreflang="x-default" href="https://cutecopymoji.com/en/replace.html" />
+<link rel="alternate" hreflang="en" href="https://cutecopymoji.com/en/replace.html" />
+<link rel="alternate" hreflang="ko" href="https://cutecopymoji.com/ko/replace.html" />
+<link rel="alternate" hreflang="ja" href="https://cutecopymoji.com/ja/replace.html" />
+<link rel="alternate" hreflang="es" href="https://cutecopymoji.com/es/replace.html" />
+<link rel="alternate" hreflang="pt" href="https://cutecopymoji.com/pt/replace.html" />
+<link rel="alternate" hreflang="fr" href="https://cutecopymoji.com/fr/replace.html" />
+<link rel="alternate" hreflang="de" href="https://cutecopymoji.com/de/replace.html" />
+
+
+  <!-- AdSense (loader once per page) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4324510515730355" crossorigin="anonymous"></script>
+
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <style>
+    /* Toast theme tokens (works with existing palette) */
+    :root{
+      --toast-bg: var(--accent);      /* fall back to accent color */
+      --toast-fg: var(--chrome);      /* readable on accent */
+    }
+    html[data-theme="dark"]{
+      --toast-bg: var(--accent);
+      --toast-fg: #fff;
+    }
+
+    /* === Kaomoji area (no big outer border) === */
+    .kao-wrap{ margin:14px 0 0; }
+    .kao-head{ margin:0 0 6px; }
+    .kao-title{
+      margin:0;
+      font-size:clamp(16px, 2vw, 18px);
+      line-height:1.25;
+      font-weight:700;
+    }
+    .kao-desc{ margin:4px 0 var(--kao-gap-bottom); color:var(--text-muted); font-size:clamp(12px, 1.6vw, 13px) }
+
+    /* Grid — add 4-col mobile */
+    #grid{ display:grid; gap:10px; align-items:start; grid-template-columns:repeat(2,1fr); }
+    @media(min-width:400px){ #grid{ grid-template-columns:repeat(3,1fr);} }
+    @media(min-width:480px){ #grid{ grid-template-columns:repeat(4,1fr);} } /* NEW: 4-col mobile */
+    @media(min-width:768px){ #grid{ grid-template-columns:repeat(5,1fr);} }
+    @media(min-width:1024px){ #grid{ grid-template-columns:repeat(6,1fr);} }
+    @media(min-width:1200px){ #grid{ grid-template-columns:repeat(7,1fr);} }
+
+    .emo-card{
+      position:relative;
+      display:flex;align-items:center;justify-content:center; /* center kaomoji */
+      min-height:88px;padding:10px 12px;border-radius:12px;
+      background:var(--card);border:1px solid var(--border);box-shadow:var(--shadow);
+      cursor:pointer;
+    }
+    .emo-card.is-fav{ outline:2px solid var(--accent); }
+    .emo-t{ font-size:clamp(13px, 1.6vw, 14px); line-height:1.2;text-align:center;white-space:pre-wrap;word-break:break-word; }
+    .fav-btn{
+      position:absolute; top:6px; right:6px; /* pin top-right */
+      font-size:12px; padding:2px 6px; line-height:1;
+      border-radius:10px; border:1px solid var(--border); background:var(--chip);
+      cursor:pointer;
+    }
+
+    .empty{display:none;text-align:center;padding:16px;color:#666}
+    .infeed{margin:12px 0}
+    .infeed ins.adsbygoogle{display:block}
+    .morebar{margin-top:10px;text-align:center}
+    .morebar button{height:34px;padding:0 14px;border-radius:10px;border:1px solid var(--border);background:var(--chip);cursor:pointer}
+
+    /* Toast (theme aware) */
+    .toast{ position:fixed; left:50%; bottom:18px; transform:translateX(-50%);
+      background:var(--toast-bg); color:var(--toast-fg);
+      padding:8px 12px; border-radius:10px; border:1px solid var(--border);
+      font-size:13px; line-height:1; opacity:0; pointer-events:none; transition:opacity .2s ease; z-index:9999; }
+    .toast.show{ opacity:1; }
+
+    /* Quick access — trim inner bottom gap */
+    .quick-wrap{ margin:18px 0 24px; padding-bottom:0; } /* add bottom space under Quick access */
+    .quick{ margin-bottom:0; padding-bottom:0; }
+      .after-quick{ margin-top:20px; }
+    /* spacing under Quick access + above its ads */
+    .quick-wrap{ margin-bottom:24px; }
+    .after-quick{ margin-top:20px; }
+
+    /* === Remove *internal* bottom space inside Quick access grid === */
+    .quick-wrap{ padding-bottom:0 !important; }
+    .quick{ margin-bottom:0 !important; padding-bottom:12px !important; }
+    .quick > *:last-child{ margin-bottom:0 !important; }
+    .quick::after{ content:none !important; }
+
+
+    /* Quick access: use one shared gap for top & bottom spacing INSIDE the table */
+    .quick-wrap{ --quick-gap: 10px; }
+    .quick-head{ margin-bottom: var(--quick-gap) !important; }
+    .quick{ padding-bottom: var(--quick-gap) !important; margin-bottom: 0 !important; }
+
+
+    /* Quick access internal spacing override: larger bottom gap */
+    .quick-wrap{ --quick-gap-top: 10px; --quick-gap-bottom: 20px; }
+    .quick-head{ margin-bottom: var(--quick-gap-top) !important; }
+    .quick{ padding-bottom: var(--quick-gap-bottom) !important; margin-bottom: 0 !important; }
+
+
+    /* === Quick access spacing: match index === */
+    .quick-wrap{ padding:12px !important; }
+    .quick{ margin-bottom:28px !important; padding-bottom:0 !important; }
+
+    .kao-wrap{ --kao-gap-bottom: 16px; }
+
+    /* === Dark-mode visibility fixes (requested) === */
+    html[data-theme="dark"] .morebar button{
+      color:#fff !important;
+      background: var(--chip, #1f1f1f);
+      border-color: var(--border, #333);
+    }
+    html[data-theme="dark"] .fav-btn.is-active{
+      color:#fff !important; /* pressed star = white */
+      background: var(--chip, #1f1f1f);
+      border-color: var(--border, #333);
+    }
+
+
+    /* Tighten space under the LAST infeed ad before the footer */
+    main .infeed:last-child{ margin-bottom: 6px !important; }
+    /* If footer has big top padding, keep it modest on this page only */
+    footer .f-inner{ padding-top: 12px; }
+
+
+    /* === Align ad/footer spacing with index === */
+    .after-quick{ margin-top: 0 !important; } /* no extra gap above ad */
+    main .infeed:last-child{ margin-bottom: 16px !important; } /* match core default */
+
+
+    /* === Text Replace: 1 column layout on all viewports === */
+    #grid{ display:grid; gap:10px; align-items:start; grid-template-columns:1fr !important; }
+    @media(min-width:400px){ #grid{ grid-template-columns:1fr !important;} }
+    @media(min-width:480px){ #grid{ grid-template-columns:1fr !important;} }
+    @media(min-width:768px){ #grid{ grid-template-columns:1fr !important;} }
+    @media(min-width:1024px){ #grid{ grid-template-columns:1fr !important;} }
+    @media(min-width:1200px){ #grid{ grid-template-columns:1fr !important;} }
+    /* Long text wraps naturally */
+    .emo-t{ white-space:pre-wrap; word-break:break-word; }
+
+
+
+    /* Mobile gutter so cards don't touch the right edge */
+@media (max-width: 1023px){
+  main.wrap{
+    padding-left: max(12px, env(safe-area-inset-left));
+    padding-right: max(12px, env(safe-area-inset-right));
+  }
+}
+
+
+</style>
+  <script src="../assets/replace-data.js"></script>
+</head>
+<body>
+  <header>
+    <div class="wrap h-inner">
+      <a href="./index.html" class="brand" aria-label="Home">Cute CopyMoji</a>
+      <button class="hamburger" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false"
+              onclick="(function(btn){document.body.classList.toggle('menu-open');btn.setAttribute('aria-expanded',document.body.classList.contains('menu-open'));})(this)">☰</button>
+      <nav class="nav desktop-nav" role="navigation" aria-label="Primary">
+        <a href="./kaomoji.html">Kaomoji</a>
+        <a href="./line.html">Trennlinien</a>
+        <a href="./replace.html" aria-current="page">Text ersetzen</a>
+        <a href="./emoji.html">Emoji</a>
+        <a href="./dotart.html">ASCII-Kunst</a>
+        <a href="./fonts.html">Schriftarten</a>
+        <a href="./username.html">ID-Generator</a>
+        <a href="./favorites.html">Favoriten</a>
+        <a href="./settings.html">Einstellungen</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="./index.html" class="home-link"><span>Startseite</span></a>
+    <a href="./kaomoji.html"><span>Kaomoji</span></a>
+    <a href="./line.html"><span>Trennlinien</span></a>
+    <a href="./replace.html"><span>Text ersetzen</span></a>
+    <a href="./emoji.html"><span>Emoji</span></a>
+    <a href="./dotart.html"><span>ASCII-Kunst</span></a>
+    <a href="./fonts.html"><span>Schriftarten</span></a>
+    <a href="./username.html"><span>ID-Generator</span></a>
+    <a href="./favorites.html"><span>Favoriten</span></a>
+    <a href="./settings.html"><span>Einstellungen</span></a>
+  </div>
+
+  <div class="backdrop" onclick="document.body.classList.remove('menu-open');document.querySelector('.hamburger')?.setAttribute('aria-expanded','false')"></div>
+
+  <main class="wrap">
+    <!-- Kaomoji area (no .panel) -->
+    <section class="kao-wrap" aria-labelledby="kaoTitle">
+      <div class="kao-head">
+        <h1 id="kaoTitle" class="kao-title">Text ersetzen</h1>
+        <p class="kao-desc">Praktische Text-Ersetzungen und Vorlagen kopieren. Tippen zum Kopieren; ★ zum Speichern in Favoriten.</p>
+      </div>
+
+      <section id="grid" aria-live="polite"></section>
+      <div id="empty" class="empty">Keine Einträge.</div>
+
+      <div class="morebar"><button id="loadMoreBtn" type="button">Mehr laden</button></div>
+
+      </section>
+
+    <!-- Quick access (no ads inside; inner bottom gap removed above) -->
+    <section class="quick-wrap" aria-labelledby="quickTitle">
+  <div class="quick-head">
+    <!-- 아이콘은 .mi 스타일 재사용 (원하는 아이콘으로 교체 가능) -->
+    <svg class="mi" viewBox="0 0 24 24" aria-hidden="true">
+      <path class="fill" d="M12 2l2 4 4 .7-3 3 .7 4L12 12l-3.7 1.7.7-4-3-3L10 6z"></path>
+      <path class="stroke" d="M12 2l2 4 4 .7-3 3 .7 4L12 12l-3.7 1.7.7-4-3-3L10 6z"></path>
+    </svg>
+    <h2 id="quickTitle" style="margin:0;font:inherit">Schnellzugriff</h2>
+  </div>
+
+  
+    <!-- Quick menu -->
+
+    <section class="quick">
+    
+      <!-- Home -->
+  <a class="panel quick-item" href="./index.html" aria-current="page" style="text-align:center;padding:16px">
+    <svg class="mi big" viewBox="0 0 24 24" aria-hidden="true">
+      <path class="stroke" d="M3 10.5L12 4l9 6.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>
+    </svg>
+    <div style="margin-top:8px;font-weight:600">Startseite</div>
+  </a>
+
+  <!-- Kaomoji -->
+  <a class="panel quick-item" href="./kaomoji.html" style="text-align:center;padding:16px">
+    <svg class="mi big" viewBox="0 0 24 24" aria-hidden="true">
+      <circle class="stroke" cx="12" cy="12" r="8.5"/>
+      <circle class="stroke" cx="9" cy="11" r="1"/>
+      <path class="stroke" d="M14.5 11.2h1.6"/>
+      <path class="stroke" d="M8.8 15c1.6 1.2 4.8 1.2 6.4 0"/>
+    </svg>
+    <div style="margin-top:8px;font-weight:600">Kaomoji</div>
+  </a>
+
+  <!-- Line -->
+  <a class="panel quick-item" href="./line.html" style="text-align:center;padding:16px">
+    <svg class="mi big" viewBox="0 0 24 24" aria-hidden="true">
+      <path class="stroke" d="M4.5 6.5h15v8.2a3 3 0 0 1-3 3H11l-3.8 3v-3H7.5a3 3 0 0 1-3-3z"/>
+    </svg>
+    <div style="margin-top:8px;font-weight:600">Trennlinien</div>
+  </a>
+
+  <!-- Text Replace -->
+  <a class="panel quick-item" href="./replace.html" style="text-align:center;padding:16px">
+    <svg class="mi big" viewBox="0 0 24 24" aria-hidden="true">
+      <!-- A→☆ 치환 느낌 -->
+      <rect class="stroke" x="3" y="5" width="8" height="14" rx="2"/>
+      <path class="stroke" d="M5.5 15h4M7.5 9l1.5 4"/>
+      <path class="stroke" d="M13 12h8"/>
+      <path class="stroke" d="M18 7l3 3-3 3"/>
+    </svg>
+    <div style="margin-top:8px;font-weight:600">Text ersetzen</div>
+  </a>
+
+  <!-- Emoji -->
+  <a class="panel quick-item" href="./emoji.html" style="text-align:center;padding:16px">
+    <svg class="mi big" viewBox="0 0 24 24" aria-hidden="true">
+      <circle class="stroke" cx="12" cy="12" r="8.5"/>
+      <circle class="stroke" cx="9" cy="10" r="1"/>
+      <circle class="stroke" cx="15" cy="10" r="1"/>
+      <path class="stroke" d="M8.5 14.5c2 1.8 5 1.8 7 0"/>
+    </svg>
+    <div style="margin-top:8px;font-weight:600">Emoji</div>
+  </a>
+
+  <!-- Dot/ASCII -->
+  <a class="panel quick-item" href="./dotart.html" style="text-align:center;padding:16px">
+    <svg class="mi big" viewBox="0 0 24 24" aria-hidden="true">
+      <circle class="stroke" cx="7" cy="7" r="1.2"/><circle class="stroke" cx="12" cy="7" r="1.2"/><circle class="stroke" cx="17" cy="7" r="1.2"/>
+      <circle class="stroke" cx="7" cy="12" r="1.2"/><circle class="stroke" cx="12" cy="12" r="1.2"/><circle class="stroke" cx="17" cy="12" r="1.2"/>
+      <circle class="stroke" cx="7" cy="17" r="1.2"/><circle class="stroke" cx="12" cy="17" r="1.2"/><circle class="stroke" cx="17" cy="17" r="1.2"/>
+    </svg>
+    <div style="margin-top:8px;font-weight:600">ASCII-Kunst</div>
+  </a>
+
+  <!-- Fonts -->
+  <a class="panel quick-item" href="./fonts.html" style="text-align:center;padding:16px">
+    <svg class="mi big" viewBox="0 0 24 24" aria-hidden="true">
+      <path class="stroke" d="M4 18h4l2-5h4l2 5h4"/>
+      <path class="stroke" d="M10 13l2-7 2 7"/>
+    </svg>
+    <div style="margin-top:8px;font-weight:600">Schriftarten</div>
+  </a>
+
+  <!-- ID Generator -->
+  <a class="panel quick-item" href="./username.html" style="text-align:center;padding:16px">
+    <svg class="mi big" viewBox="0 0 24 24" aria-hidden="true">
+      <rect class="stroke" x="3" y="6" width="18" height="12" rx="2"/>
+      <circle class="stroke" cx="8.5" cy="12" r="2"/>
+      <path class="stroke" d="M12.5 10h6M12.5 13h6M12.5 16h4"/>
+    </svg>
+    <div style="margin-top:8px;font-weight:600">ID-Generator</div>
+  </a>
+
+  <!-- Favorites -->
+  <a class="panel quick-item" href="./favorites.html" style="text-align:center;padding:16px">
+    <svg class="mi big" viewBox="0 0 24 24" aria-hidden="true">
+      <path class="stroke" d="M12 3.5l2.4 4.9 5.4.8-3.9 3.9.9 5.5L12 16.9 7.2 18.6l.9-5.5L4.2 9.2l5.4-.8z"/>
+    </svg>
+    <div style="margin-top:8px;font-weight:600">Favoriten</div>
+  </a>
+
+  <!-- Settings -->
+  <a class="panel quick-item" href="./settings.html" style="text-align:center;padding:16px">
+    <svg class="mi big" viewBox="0 0 24 24" aria-hidden="true">
+      <circle class="stroke" cx="12" cy="12" r="7.5"/>
+      <circle class="stroke" cx="12" cy="12" r="2.5"/>
+      <path class="stroke" d="M12 3.5v3M20.5 12h-3M12 20.5v-3M3.5 12h3M17.4 6.6l-2.1 2.1M17.4 17.4l-2.1-2.1M6.6 17.4l2.1-2.1M6.6 6.6l2.1 2.1"/>
+    </svg>
+    <div style="margin-top:8px;font-weight:600">Einstellungen</div>
+  </a>
+</section>
+
+</section>
+
+<!-- slot_end -->
+<div class="infeed only-desktop" aria-label="Sponsored">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-4324510515730355"
+       data-ad-slot="9132817506"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+
+    <!-- 모바일 전용 광고 자리 -->
+<div class="infeed only-mobile" aria-label="Sponsored">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-4324510515730355"
+       data-ad-slot="9132817506"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+  </main>
+
+  <footer>
+    <div class="wrap f-inner">
+      <nav>
+        <a href="./privacy.html">Datenschutzerklärung</a> · <a href="./terms.html">Nutzungsbedingungen</a> · <a href="./contact.html">Kontakt</a>
+      </nav>
+      <small>© 2025 Cute CopyMoji. Alle Rechte vorbehalten.</small>
+    </div>
+  </footer>
+
+  <button onclick="window.scrollTo({top:0,behavior:'smooth'})" id="topBtn" class="fab" title="Go to top">↑</button>
+  <button onclick="if(navigator.share){navigator.share({title:'Cute CopyMoji',url:location.href});}else{navigator.clipboard&&navigator.clipboard.writeText(location.href).then(()=>alert('Link copied!'));}" id="shareBtn" class="fab" title="Share">↗</button>
+
+  <!-- Theme-color sync -->
+  <script>
+  (function(){
+    function syncThemeColor(){
+      const hex = getComputedStyle(document.documentElement).getPropertyValue('--chrome').trim() || '#ffffff';
+      let meta = document.querySelector('meta[name="theme-color"]:not([media])');
+      if(!meta){ meta = document.createElement('meta'); meta.setAttribute('name','theme-color'); document.head.appendChild(meta); }
+      meta.setAttribute('content', hex);
+    }
+    syncThemeColor();
+    document.addEventListener('change', function(e){
+      if(e.target && e.target.matches('input[name="t"][data-ccm-theme]')) setTimeout(syncThemeColor, 0);
+    });
+    window.addEventListener('DOMContentLoaded', syncThemeColor);
+  })();
+  </script>
+
+  <!-- Data -->
+  
+  <script>
+    (function(){ try{
+      if(typeof window.DEFAULT_ITEMS === 'undefined' && typeof DEFAULT_ITEMS !== 'undefined'){
+        window.DEFAULT_ITEMS = DEFAULT_ITEMS;
+      }
+    }catch(e){} })();
+  </script>
+
+  
+  <script>
+    (function(){ try{
+      if(!Array.isArray(window.DEFAULT_ITEMS)){
+        window.DEFAULT_ITEMS = window.REPLACE_ITEMS || window.DEFAULT_ITEMS || [];
+      }
+    }catch(e){} })();
+  </script>
+
+  <!-- Text Replace logic (same renderer) -->
+  <script>
+  const FAV_KEY = 'replace.favs.v1';
+  let INSERT_EVERY = 28;  // recalculated from columns
+  let PAGE_SIZE = 84;     // recalculated as cadence * 3
+  const $grid = document.getElementById('grid');
+  const $empty = document.getElementById('empty');
+  const $load = document.getElementById('loadMoreBtn');
+  let nextIndex = 0;
+
+  function loadFavs(){ try{ return JSON.parse(localStorage.getItem(FAV_KEY)||'[]'); }catch{ return []; } }
+  function saveFavs(v){ localStorage.setItem(FAV_KEY, JSON.stringify(v)); }
+  function isFav(t){ return loadFavs().includes(t); }
+  function toggleFav(t){
+    const f = loadFavs(); const i = f.indexOf(t);
+    if(i>=0) f.splice(i,1); else f.push(t);
+    saveFavs(f);
+  }
+  function escapeHtml(s){ return String(s).replace(/[&<>"']/g, m=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;' }[m])); }
+  async function copyText(s){
+    try{ await navigator.clipboard.writeText(s); }
+    catch{ const ta=document.createElement('textarea'); ta.value=s; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove(); }
+  }
+  function toast(msg){
+    let t=document.getElementById('toast');
+    if(!t){ t=document.createElement('div'); t.id='toast'; t.className='toast'; document.body.appendChild(t); }
+    t.textContent=msg; t.classList.add('show'); clearTimeout(toast._t);
+    toast._t=setTimeout(()=>t.classList.remove('show'), 1000);
+  }
+  function makeCard(it){
+    const favInit = isFav(it.t);
+    const card = document.createElement('div');
+    card.className='emo-card' + (favInit ? ' is-fav' : '');
+    const favBtn = document.createElement('button');
+    favBtn.className = 'fav-btn'; favBtn.type='button'; favBtn.title='favorite'; favBtn.setAttribute('aria-label','favorite');
+    favBtn.textContent = favInit ? '★' : '☆';
+    if(favInit){ favBtn.classList.add('is-active'); }
+    const text = document.createElement('div');
+    text.className = 'emo-t'; text.textContent = it.t;
+
+    card.appendChild(favBtn);
+    card.appendChild(text);
+
+    card.addEventListener('click', async ()=>{ await copyText(it.t); toast('Kopiert!'); });
+    favBtn.addEventListener('click', (e)=>{
+      e.stopPropagation();
+      toggleFav(it.t);
+      const nowFav = isFav(it.t);
+      favBtn.textContent = nowFav ? '★' : '☆';
+      favBtn.classList.toggle('is-active', nowFav);
+      card.classList.toggle('is-fav', nowFav);
+    });
+    return card;
+  }
+  function makeAdSlot(){
+    const box = document.createElement('div');
+    box.className = 'infeed';
+    box.style.gridColumn = '1 / -1';
+    box.setAttribute('aria-label','Sponsored');
+    const ins = document.createElement('ins');
+    ins.className = 'adsbygoogle';
+    ins.style.display = 'block';
+    ins.setAttribute('data-ad-client','ca-pub-4324510515730355');
+    ins.setAttribute('data-ad-slot','6633850514');
+    ins.setAttribute('data-ad-format','auto');
+    ins.setAttribute('data-full-width-responsive','true');
+    box.appendChild(ins);
+    setTimeout(()=>{ try{ (adsbygoogle = window.adsbygoogle || []).push({}); }catch(e){} }, 0);
+    return box;
+  }
+  function getCols(){
+    const cs = getComputedStyle($grid);
+    const cols = cs.gridTemplateColumns.split(' ').filter(Boolean).length || 2;
+    return cols;
+  }
+  function recalcCadence(){
+    const cols = getCols();
+    // New mapping: <=4 cols → 16, 5–6 cols → 24, >=7 cols → 28
+    if(cols <= 4) INSERT_EVERY = 16;
+    else if(cols <= 6) INSERT_EVERY = 24;
+    else INSERT_EVERY = 28;
+    PAGE_SIZE = INSERT_EVERY * 3;
+  }
+  function dataItems(){
+    const list = (window.DEFAULT_ITEMS && Array.isArray(window.DEFAULT_ITEMS)) ? window.DEFAULT_ITEMS : [];
+    return list;
+  }
+  function resetAndRender(){
+    recalcCadence();
+    const items = dataItems();
+    $grid.innerHTML = '';
+    $empty.style.display = items.length ? 'none' : 'block';
+    nextIndex = 0;
+    appendMore();
+  }
+  function appendMore(){
+    const items = dataItems();
+    const start = nextIndex;
+    const end = Math.min(items.length, start + PAGE_SIZE);
+    if(start >= end){ if($load) $load.disabled = true; return; }
+
+    let countSinceAd = ($grid.querySelectorAll('.emo-card').length % INSERT_EVERY);
+    for(let i=start;i<end;i++){
+      $grid.appendChild(makeCard(items[i]));
+      countSinceAd++;
+      if(countSinceAd === INSERT_EVERY){
+        $grid.appendChild(makeAdSlot());
+        countSinceAd = 0;
+      }
+    }
+    nextIndex = end;
+    if($load){ $load.disabled = nextIndex >= items.length; }
+  }
+
+  window.addEventListener('DOMContentLoaded', () => {
+    try{ (adsbygoogle = window.adsbygoogle || []).push({}); }catch(e){}
+    resetAndRender();
+    document.getElementById('loadMoreBtn')?.addEventListener('click', appendMore);
+  });
+  window.addEventListener('resize', () => {
+    const old = INSERT_EVERY;
+    recalcCadence();
+    if(old !== INSERT_EVERY){ resetAndRender(); }
+  });
+  </script>
+
+
+
+
+
+
+  <div id="toast" class="toast" role="status" aria-live="polite">Kopiert!</div>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is a kaomoji?", "acceptedAnswer": {"@type": "Answer", "text": "Kaomoji are Japanese emoticons made with ASCII/Unicode characters."}}, {"@type": "Question", "name": "How do I copy a kaomoji?", "acceptedAnswer": {"@type": "Answer", "text": "Tap any card to copy it to your clipboard."}}, {"@type": "Question", "name": "How do Favorites work?", "acceptedAnswer": {"@type": "Answer", "text": "Press ★ on a card to save it. You can find saved items later on the Favorites page."}}]}</script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /assets/
+Disallow: /tmp/
+Allow: /
+
+# Sitemap location
+Sitemap: https://cutecopymoji.com/sitemap.xml
