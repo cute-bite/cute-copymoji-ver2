@@ -1,0 +1,573 @@
+:root{
+  --container:1180px;--gap:16px;--radius:16px;
+  --shadow:0 8px 24px rgba(0,0,0,.06);
+  --ink:#222;
+  --bg:#fff;               /* page background */
+  --card:#fff;             /* card/header/footer surfaces */
+  --border:#ececf3;
+  --muted:#f6f7fb;         /* soft blocks (ad-box, sections) */
+  --chip:#f6f7fb;          /* small pills */
+  --accent:#6a8dff;        /* links/buttons accent */
+
+  --fab-size:56px;--fab-bg:#ff6aa0;--fab-bg-hover:#ff85b5;--fab-color:#fff;--fab-gap:12px;
+}
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Noto Sans,Helvetica,Arial;color:var(--ink);background:var(--bg)}
+a{text-decoration:none;color:var(--accent)}
+.wrap{max-width:var(--container);margin:0 auto;padding:0 16px}
+
+/* Header / Drawer / Footer use theme variables */
+header{position:sticky;top:0;z-index:800;background:var(--card);border-bottom:1px solid var(--border)}
+.h-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{font-weight:800}
+.nav a{margin:0 6px;padding:6px 8px;border-radius:6px}
+
+.hamburger{display:none}
+.mobile-menu{position:fixed;top:0;left:-300px;width:280px;height:100dvh;background:var(--card);box-shadow:2px 0 20px rgba(0,0,0,.18);padding:18px;display:flex;flex-direction:column;gap:10px;z-index:1000;transition:left .28s ease}
+.mobile-menu a{padding:12px;border-radius:10px;border:1px solid var(--border)}
+.backdrop{position:fixed;inset:0;background:rgba(0,0,0,.25);opacity:0;pointer-events:none;z-index:900;transition:opacity .2s}
+body.menu-open .mobile-menu{left:0}
+body.menu-open .backdrop{opacity:1;pointer-events:auto}
+body.menu-open{overflow:hidden}
+@media(max-width:768px){.desktop-nav{display:none}.hamburger{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;font-size:22px;border:0;background:transparent;cursor:pointer}.h-inner{gap:8px;height:auto;padding:8px 12px}}
+
+.ad-box{background:var(--muted);border-radius:16px;padding:6px;margin:12px 0}
+.ad-label{font-size:12px;color:#666;padding:4px 8px}
+.only-desktop{display:none}.only-mobile{display:block}
+@media(min-width:1024px){.only-desktop{display:block}.only-mobile{display:none}}
+
+footer{border-top:1px solid var(--border);background:var(--card);margin-top:20px;text-align:center}
+.f-inner{display:flex;flex-direction:column;align-items:center;gap:6px;padding:16px 0}
+.f-inner nav a{font-size:13px;margin:0 4px;color:#666}
+.f-inner small{font-size:12px;color:#999}
+
+.fab{position:fixed;right:24px;z-index:700;border:none;border-radius:50%;cursor:pointer;box-shadow:var(--shadow);width:var(--fab-size);height:var(--fab-size);line-height:var(--fab-size);text-align:center;font-size:20px;color:var(--fab-color);background:var(--fab-bg)}
+.fab:hover{background:var(--fab-bg-hover)}
+#topBtn{bottom:24px}#shareBtn{bottom:calc(24px + var(--fab-size) + var(--fab-gap))}
+
+/* DARK */
+html[data-theme='dark']{
+  --ink:#eee; --bg:#111; --card:#191919; --border:#333;
+  --muted:#1e1e1e; --chip:#242424; --accent:#91a7ff;
+  --fab-bg:#8a8a8a; --fab-bg-hover:#9a9a9a;
+}
+
+/* PASTELS — add gentle background tint + accent; readable on white cards */
+html[data-theme='pastel-pink']{
+  --bg:#fff7fa; --card:#ffffff; --border:#f3d6df;
+  --muted:#fff0f5; --chip:#ffe6eb; --accent:#ff7393;
+  --fab-bg:#ffb6c1; --fab-bg-hover:#ffccd5; --ink:#222;
+}
+html[data-theme='pastel-red']{
+  --bg:#fff6f6; --card:#ffffff; --border:#f3d0d0;
+  --muted:#ffefef; --chip:#ffe6e6; --accent:#ff6b6b;
+  --fab-bg:#ff6b6b; --fab-bg-hover:#ff8585; --ink:#222;
+}
+html[data-theme='pastel-sky']{
+  --bg:#f6fbff; --card:#ffffff; --border:#cfe6fb;
+  --muted:#eef7ff; --chip:#e6f6ff; --accent:#56a9ff;
+  --fab-bg:#87cefa; --fab-bg-hover:#a3dbff; --ink:#222;
+}
+html[data-theme='pastel-green']{
+  --bg:#f7fff7; --card:#ffffff; --border:#d2f0d2;
+  --muted:#efffef; --chip:#e6ffe6; --accent:#3bbf6b;
+  --fab-bg:#77dd77; --fab-bg-hover:#8ee88e; --ink:#222;
+}
+html[data-theme='pastel-yellow']{
+  --bg:#fffeef; --card:#ffffff; --border:#f3e8b5;
+  --muted:#fffbe1; --chip:#fffde6; --accent:#e0b600;
+  --fab-bg:#fff176; --fab-bg-hover:#ffec8c; --ink:#222;
+}
+html[data-theme='pastel-purple']{
+  --bg:#fbf6ff; --card:#ffffff; --border:#e6d6fb;
+  --muted:#f7efff; --chip:#f5e6ff; --accent:#a27cf2;
+  --fab-bg:#cba6f7; --fab-bg-hover:#d8b9fa; --ink:#222;
+}
+html[data-theme='pastel-orange']{
+  --bg:#fff8f1; --card:#ffffff; --border:#f2ddc5;
+  --muted:#fff1e6; --chip:#fff0e6; --accent:#ff8f3a;
+  --fab-bg:#ffb347; --fab-bg-hover:#ffc266; --ink:#222;
+}
+
+/* Menu link color override: default dark text; white only in dark theme */
+.nav a,
+.mobile-menu a { 
+  color: #222 !important;
+}
+
+html[data-theme='dark'] .nav a,
+html[data-theme='dark'] .mobile-menu a {
+  color: #fff !important;
+}
+
+
+html[data-theme='dark'] .brand { color: #fff; }
+
+/* Settings page text colors follow theme ink */
+.settings h2,
+.settings label,
+.settings legend,
+.settings select,
+.settings .note {
+  color: var(--ink);
+}
+
+/* Note text lighter in dark mode for readability */
+html[data-theme='dark'] .settings .note {
+  color: #bbb;
+}
+
+/* Settings panel follows theme variables */
+.panel {
+  background: var(--card) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--ink) !important;
+}
+
+/* Headings and text in settings */
+.panel h2,
+.settings label,
+.settings select,
+.settings .note {
+  color: var(--ink) !important;
+}
+
+/* In dark mode, note text a bit softer */
+html[data-theme='dark'] .settings .note {
+  color: #bbb !important;
+}
+
+.row { flex-direction: column; align-items: flex-start; }
+.row .note { margin-top: 4px; }
+
+/* 기본 칩 글자색 */
+.chip {
+  color: #222;
+}
+
+/* 다크 테마에서는 흰색으로 */
+html[data-theme='dark'] .chip {
+  color: #fff;
+}
+
+/* Quick menu: 5x2 고정 */
+.quick{
+  display:grid;
+  grid-template-columns:repeat(5,1fr); /* 데스크톱에서 5개씩 */
+  gap:12px;
+  margin:18px 0 28px;
+}
+.quick .quick-item{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  min-height:120px;
+  border:1px solid var(--border);
+  border-radius:16px;
+  background:var(--card);
+}
+
+/* 모바일에서는 2xN으로 변경 */
+@media (max-width:768px){
+  .quick{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+
+/* Icon base (same as include-layout.js) */
+.mi{width:18px;height:18px;flex:0 0 18px}
+.mi.big{width:36px;height:36px}
+.mi .fill{fill:var(--chip)}
+.mi .stroke{stroke:var(--accent);stroke-width:1.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
+
+
+/* 데스크톱: 광고 있을 때만 높이 */
+@media (min-width: 769px){
+  .infeed{min-height:0;}
+  .infeed:has(ins.adsbygoogle){min-height:180px;}
+}
+
+/* 폴백: :has 미지원 브라우저 */
+@supports not (selector(:has(*))){
+  .infeed:empty{display:none;}
+}
+
+
+
+/* === Quick Access wrapper === */
+.quick-wrap{
+  border:1px solid var(--border);
+  border-radius:16px;
+  background:var(--card);
+  padding:12px;              /* 안쪽 여백 */
+  margin:16px 0 0;           /* 위 간격 */
+  box-shadow:var(--shadow);  /* 살짝 띄우기 */
+}
+.quick-head{
+  display:flex; align-items:center; gap:8px;
+  margin:2px 2px 10px;
+  color:var(--ink); font-weight:700; font-size:20px;
+}
+.quick-head .mi{ width:18px; height:18px; }
+/* 퀵 그리드는 기존 4×2 고정 규칙 유지, 위 박스 안에서 상단 여백만 제거 */
+.quick-wrap .quick{ margin-top:0; }
+
+/* 기본(라이트) & 다크 */
+:root { --chrome: #ffffff; }          /* 라이트 기본 */
+html[data-theme="dark"] { --chrome: #121212; } /* 다크 기본 */
+
+/* 쓰는 테마만 추가하면 됨 (안 쓰면 생략 OK) */
+html[data-theme="pastel-pink"]   { --chrome: #FFEAF1; } /* swatch: #ffb6c1 */
+html[data-theme="pastel-red"]    { --chrome: #FFE3E3; } /* swatch: #ff6b6b */
+html[data-theme="pastel-sky"]    { --chrome: #EAF5FF; } /* swatch: #87cefa */
+html[data-theme="pastel-green"]  { --chrome: #EAF8E9; } /* swatch: #77dd77 */
+html[data-theme="pastel-yellow"] { --chrome: #FFF7CC; } /* swatch: #fff176 */
+html[data-theme="pastel-purple"] { --chrome: #F2E9FF; } /* swatch: #cba6f7 */
+html[data-theme="pastel-orange"] { --chrome: #FFE9CC; } /* swatch: #ffb347 */
+
+/* 컨텐츠 패널 공통 스타일 */
+.panel { border-radius:16px; }
+.settings .panel { padding:16px; margin:16px 0; box-shadow: var(--shadow); }
+
+/* 페이지 타이틀 & 메타 날짜 */
+.page-title{ margin:0 0 6px; font-size:clamp(22px,3vw,30px); line-height:1.2; }
+.meta-date{ margin:0 0 14px; font-size:12px; }
+
+/* 패널 내 소제목/본문/목록 */
+.panel h2{ margin:18px 0 8px; font-size:clamp(16px,2.2vw,20px); font-weight:600; }
+.panel p, .panel li{ font-size:clamp(14px,1.8vw,16px); line-height:1.65; }
+.panel ul{ padding-left:1.2em; margin:8px 0; }
+
+/* (선택) 패널 라운드/여백 통일 – 이미 있으면 생략 */
+.panel{ border-radius:16px; }
+.settings .panel, .legal .panel{ padding:16px; margin:16px 0; box-shadow:var(--shadow); }
+
+
+/* Privacy page: compact type scale */
+#privacyPage .page-title{
+  font-size:clamp(20px, 2.4vw, 26px);  /* h1 더 작게 */
+  line-height:1.25;
+}
+#privacyPage .meta-date{
+  font-size:11px;                      /* 시행일 더 작게(회색은 기존 .muted로) */
+}
+
+#privacyPage h2{
+  font-size:clamp(14px, 2vw, 17px);    /* 소제목 축소 */
+  font-weight:600;
+  margin:16px 0 8px;
+}
+
+#privacyPage p,
+#privacyPage li{
+  font-size:clamp(13px, 1.6vw, 14.5px);/* 본문/목록 작게 */
+  line-height:1.6;
+}
+
+
+/* ===== Privacy page (퀵과 같은 가로폭 + 넓은 내부 여백) ===== */
+#privacyPage{
+  max-width: none;      /* 가로 제한 제거 → quick과 동일 폭 */
+  width: 100%;          /* .wrap 컨테이너 폭을 꽉 씀 */
+  margin: 16px 0;       /* 좌우 auto 제거해 꽉 차 보이게 */
+  padding: 24px 28px;   /* 테두리 안쪽 여백 넉넉하게 */
+  border-radius: 16px;  /* 라운드 유지 (두께는 변경 없음) */
+}
+
+@media (max-width:480px){
+  #privacyPage{
+    padding: 18px 16px;
+    margin: 12px 0;
+  }
+}
+
+/* Mobile menu: icon + label 정렬 & 크기 */
+.mobile-menu a{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;            /* 기존보다 살짝 여유 */
+}
+.mobile-menu a .mi{
+  width: 22px;
+  height: 22px;
+  flex: 0 0 22px;                 /* 고정폭 → 줄바꿈 안정 */
+}
+
+/* Terms page: quick과 같은 가로폭 + 넉넉한 패딩 */
+#termsPage{
+  max-width: none;
+  width: 100%;
+  margin: 16px 0;
+  padding: 24px 28px;
+  border-radius: 16px;
+}
+@media (max-width:480px){
+  #termsPage{ padding: 18px 16px; margin: 12px 0; }
+}
+
+/* ===== Terms page: compact type scale (Privacy와 동일 톤) ===== */
+#termsPage .page-title{
+  font-size: clamp(20px, 2.4vw, 26px); /* 기본 30px → 26px로 다운 */
+  line-height: 1.25;
+}
+#termsPage .meta-date{
+  font-size: 11px;                    /* 시행일 더 작게 */
+}
+#termsPage h2{
+  font-size: clamp(14px, 2vw, 17px);  /* 소제목 축소 */
+  font-weight: 600;
+  margin: 16px 0 8px;
+}
+#termsPage p,
+#termsPage li{
+  font-size: clamp(13px, 1.6vw, 14.5px); /* 본문/목록 축소 */
+  line-height: 1.6;
+}
+
+.infeed { margin: 16px 0; }                  /* 기본 간격 */
+@media (max-width: 480px){
+  .infeed { margin: 12px 0; }                /* 모바일 살짝 타이트 */
+}
+
+/* Contact: 폭/여백(퀵과 동일 폭) + 컴팩트 타입 */
+#contactPage{
+  max-width: none; width: 100%;
+  margin: 16px 0; padding: 24px 28px;
+  border-radius: 16px;
+}
+@media (max-width:480px){
+  #contactPage{ margin: 12px 0; padding: 18px 16px; }
+}
+#contactPage .page-title{ font-size:clamp(20px,2.4vw,26px); line-height:1.25; }
+#contactPage h2{ font-size:clamp(14px,2vw,17px); font-weight:600; margin:16px 0 8px; }
+#contactPage p, #contactPage li, #contactPage summary{
+  font-size:clamp(13px,1.6vw,14.5px); line-height:1.6;
+}
+
+/* FAQ (토글) */
+details.faq{
+  border:1px solid var(--border, #e5e7eb);
+  border-radius:12px; padding:10px 12px; margin:8px 0;
+  background: var(--panel-bg, #fff);
+}
+details.faq[open]{ background: var(--panel-open-bg, rgba(0,0,0,.02)); }
+details.faq summary{ cursor:pointer; list-style:none; display:flex; align-items:center; gap:8px; }
+details.faq summary::-webkit-details-marker{ display:none; }
+details.faq .q{ font-weight:600; }
+details.faq .a{ margin-top:8px; }
+
+
+@media (max-width:480px){
+  .infeed:has(ins.adsbygoogle){ min-height:140px; }
+}
+@media (min-width:481px) and (max-width:1024px){
+  .infeed:has(ins.adsbygoogle){ min-height:180px; }
+}
+
+
+/* === Output text compact scale (Kaomoji / Line / Text Replace) === */
+#grid .emo-t, .emo-card .emo-t{
+  font-size: clamp(12px, 1.85vw, 14px);
+  line-height: 1.3;
+}
+@media (min-width:1024px){
+  #grid .emo-t, .emo-card .emo-t{ font-size: 13px; }
+}
+
+/* === Dark mode: hamburger icon visible === */
+html[data-theme='dark'] .hamburger{ color:#fff; }            /* text/icon font */
+html[data-theme='dark'] .hamburger svg{ fill:#fff; stroke:#fff; }  /* inline svg */
+html[data-theme='dark'] .hamburger .mi .fill{ fill:#fff; }         /* icon set */
+html[data-theme='dark'] .hamburger .mi .stroke{ stroke:#fff; }
+
+/* === Global form colors (light/dark) === */
+:root{
+  --input-bg: var(--chip, #fff);
+  --input-fg: var(--text, #111);
+  --input-border: var(--border, #ddd);
+  --input-ph: #9aa0a6;
+}
+html[data-theme="dark"]{
+  --input-bg: #1b1b1b;
+  --input-fg: #fff;
+  --input-border: #333;
+  --input-ph: #bbb;
+}
+
+/* Inputs & textareas */
+input[type="text"],
+input[type="search"],
+input[type="email"],
+input[type="url"],
+input[type="number"],
+input[type="password"],
+textarea{
+  background: var(--input-bg);
+  color: var(--input-fg);
+  border-color: var(--input-border);
+  caret-color: var(--input-fg);
+}
+input::placeholder,
+textarea::placeholder{
+  color: var(--input-ph);
+  opacity: 1; /* 사파리 희미해짐 방지 */
+}
+
+/* 포커스 때 흰 테두리/글로우 제거(페이지 전반 동일화) */
+input:focus,
+textarea:focus{ outline: none; box-shadow: none; }
+
+/* iOS/크롬 자동완성 시 글자색/배경 고정 */
+@supports selector(:-webkit-autofill){
+  input:-webkit-autofill,
+  textarea:-webkit-autofill{
+    -webkit-text-fill-color: var(--input-fg) !important;
+    -webkit-box-shadow: 0 0 0 1000px var(--input-bg) inset !important;
+    caret-color: var(--input-fg) !important;
+  }
+}
+
+/* (선택) contenteditable 쓰는 페이지가 있으면 */
+[contenteditable="true"]{
+  color: var(--input-fg);
+  background: var(--input-bg);
+}
+
+
+/* Mobile: cap card width and center it, keep ads full-width */
+@media (max-width: 1023px){
+  /* 카드만 폭 제한 + 중앙 정렬 (광고 .infeed 는 영향 X) */
+  /* Favorites */
+  #grid .card{ max-width: 620px; width: 100%; justify-self: center; }
+
+  /* Line / Replace (카드 클래스가 .emo-card) */
+  #grid .emo-card{ max-width: 620px; width: 100%; justify-self: center; }
+
+  /* Dot/ASCII */
+  #dotGrid .dot-card,
+  #asciiGrid .dot-card{ max-width: 620px; width: 100%; justify-self: center; }
+}
+
+/* Dark mode: unfavorited star should still be visible */
+html[data-theme="dark"] .fav-btn,
+html[data-theme="dark"] .star {
+  color: #ddd;                /* 비활성 별도 눈에 띄게 */
+  background: #2b2b2b;        /* 칩색 */
+  border-color: #5a5a5a;      /* 경계 */
+}
+
+/* 선택: 활성 상태는 더 밝게 (이미 페이지마다 .is-active 규칙 있으면 생략 가능) */
+html[data-theme="dark"] .fav-btn.is-active,
+html[data-theme="dark"] .star.is-active {
+  color: #fff;
+}
+
+/* Hamburger follows theme accent on light/pastel */
+@media (max-width:768px){
+  .hamburger{ color: var(--accent); }               /* 텍스트/폰트 아이콘 */
+  .hamburger svg{ stroke: var(--accent); fill:none; }/* 임베드 SVG */
+  .hamburger .mi .stroke{ stroke: var(--accent); }   /* 아이콘 세트(.mi) */
+  .hamburger .mi .fill{ fill: var(--accent); }
+}
+
+/* Mobile: Theme chips = 5 x 2 (총 9개면 5 + 4) */
+@media (max-width:768px){
+  .settings .themes{
+    display: grid;                       /* flex → grid */
+    grid-template-columns: repeat(5, 1fr);/* 한 줄에 5개 */
+    gap: 12px;                           /* settings.html에서 쓰는 gap과 동일 */
+    justify-items: center;               /* 동그란 칩을 칸 중앙에 */
+  }
+}
+
+/* A2HS hint bar */
+#a2hsHint{
+  position: fixed; left: 12px; right: 12px; bottom: 12px;
+  padding: 10px 12px; border-radius: 12px;
+  background: var(--chip); color: var(--text);
+  box-shadow: 0 6px 24px rgba(0,0,0,.12);
+  display: none; align-items: center; gap: 10px; z-index: 2147483647;
+  font-size: 14px;
+}
+#a2hsHint .close{ margin-left:auto; opacity:.7; cursor:pointer; }
+
+.fav-desc { margin:0; }
+.small-note { margin-top:0; display:block; }
+
+/* MOBILE — 카드 폭 줄이고 가운데 정렬 (페이지별 분기) */
+@media (max-width:1023px){
+
+
+  /* 도트아트 & 아스키아트 */
+  #dotGrid .dot-card,
+  #asciiGrid .dot-card{
+    width: min(520px, 80vw);
+    margin-inline: auto;
+    justify-self: center;
+  }
+
+  /* 즐겨찾기 */
+  #favoritesTitle ~ #grid .card{
+    width: min(520px, 80vw);
+    margin-inline: auto;
+    justify-self: center;
+  }
+}
+
+/* MOBILE — 라인 & 텍스트대치만 카드 폭 줄이고 중앙 정렬 */
+@media (max-width:1023px){
+
+  /* 라인: canonical 또는 내비 현재탭이 line.html 인 경우만 */
+  html:has(head link[rel="canonical"][href*="/line.html"]) section[aria-labelledby="lineTitle"] #grid,
+  html:has(.desktop-nav a[aria-current="page"][href$="/line.html"]) section[aria-labelledby="lineTitle"] #grid{
+    justify-items: center;
+  }
+  html:has(head link[rel="canonical"][href*="/line.html"]) section[aria-labelledby="lineTitle"] #grid .emo-card,
+  html:has(.desktop-nav a[aria-current="page"][href$="/line.html"]) section[aria-labelledby="lineTitle"] #grid .emo-card{
+    width: min(520px, 80vw);
+    max-width: 100%;
+    margin-inline: auto;
+    justify-self: center;
+    box-sizing: border-box;
+  }
+
+  /* 텍스트 대치: canonical 또는 내비 현재탭이 replace.html 인 경우만 */
+  html:has(head link[rel="canonical"][href*="/replace.html"]) section[aria-labelledby="kaoTitle"] #grid,
+  html:has(.desktop-nav a[aria-current="page"][href$="/replace.html"]) section[aria-labelledby="kaoTitle"] #grid{
+    justify-items: center;
+  }
+  html:has(head link[rel="canonical"][href*="/replace.html"]) section[aria-labelledby="kaoTitle"] #grid .emo-card,
+  html:has(.desktop-nav a[aria-current="page"][href$="/replace.html"]) section[aria-labelledby="kaoTitle"] #grid .emo-card{
+    width: min(520px, 80vw);
+    max-width: 100%;
+    margin-inline: auto;
+    justify-self: center;
+    box-sizing: border-box;
+  }
+}
+
+/* SETTINGS page only — left-align helper notes under Theme */
+@media (max-width: 4000px){ /* 항상 적용, 범위 확보용 래퍼 */
+  /* settings.html 판별: canonical 또는 내비 현재탭 */
+  html:has(head link[rel="canonical"][href*="/settings.html"]) .settings .note,
+  html:has(.desktop-nav a[aria-current="page"][href$="/settings.html"]) .settings .note,
+  html:has(head link[rel="canonical"][href*="/settings.html"]) #theme,
+  html:has(.desktop-nav a[aria-current="page"][href$="/settings.html"]) #theme {
+    text-align: left !important;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+.legal-note { font-size: 0.9em; color: #666; margin-top: 1em; }
+
+.infeed { text-align: center; }
+.infeed ins.adsbygoogle { display: inline-block !important; }
+
+/* username.html에서만 즐겨찾기 버튼 숨기기 */
+body:has(.nav a[aria-current="page"][href$="username.html"]) .fav-btn {
+  display: none !important;
+}

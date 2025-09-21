@@ -1,0 +1,602 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>フォント — Cute CopyMoji🌸</title>
+  <meta name="description" content="テキストを入力して、英語または日本語のセットを選択。任意のカードをタップしてコピー。">
+
+  <link rel="canonical" href="https://cutecopymoji.com/ja/fonts.html" />
+
+  <!-- Favicon / App icons -->
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <!-- Theme colors -->
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#121212" media="(prefers-color-scheme: dark)">
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Cute CopyMoji🌸">
+  <meta property="og:title" content="フォント — Cute CopyMoji🌸">
+  <meta property="og:description" content="テキストを入力して、英語または日本語のセットを選択。任意のカードをタップしてコピー。">
+  <meta property="og:url" content="https://cutecopymoji.com/ja/fonts.html">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:image" content="https://cutecopymoji.com/og.png">
+  <meta property="og:image:alt" content="Cute CopyMoji🌸">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="フォント — Cute CopyMoji🌸">
+  <meta name="twitter:description" content="テキストを入力して、英語または日本語のセットを選択。任意のカードをタップしてコピー。">
+  <meta name="twitter:image" content="https://cutecopymoji.com/og.png">
+
+  <!-- Styles / Scripts -->
+  <link rel="stylesheet" href="../assets/core.css?v=4">
+  <script src="../assets/core.js" defer></script>
+
+  <!-- Hreflang (7) -->
+<link rel="alternate" hreflang="x-default" href="https://cutecopymoji.com/en/fonts.html" />
+<link rel="alternate" hreflang="en" href="https://cutecopymoji.com/en/fonts.html" />
+<link rel="alternate" hreflang="ko" href="https://cutecopymoji.com/ko/fonts.html" />
+<link rel="alternate" hreflang="ja" href="https://cutecopymoji.com/ja/fonts.html" />
+<link rel="alternate" hreflang="es" href="https://cutecopymoji.com/es/fonts.html" />
+<link rel="alternate" hreflang="pt" href="https://cutecopymoji.com/pt/fonts.html" />
+<link rel="alternate" hreflang="fr" href="https://cutecopymoji.com/fr/fonts.html" />
+<link rel="alternate" hreflang="de" href="https://cutecopymoji.com/de/fonts.html" />
+
+
+  <!-- AdSense (loader once per page) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4324510515730355" crossorigin="anonymous"></script>
+
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <style>
+    :root{ --toast-bg: var(--accent); --toast-fg: var(--chrome); }
+    html[data-theme="dark"]{ --toast-bg: var(--accent); --toast-fg: #fff; }
+
+    .kao-wrap{ margin:14px 0 0; }
+    .kao-head{ margin:0 0 6px; }
+    .kao-title{ margin:0; font-size:clamp(16px,2vw,18px); line-height:1.25; font-weight:700; }
+    .kao-desc{ margin:4px 0 16px; color:var(--text-muted); font-size:clamp(12px,1.6vw,13px) }
+
+    .toolrow{ display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin:8px 0 10px }
+    #sampleInput{
+      flex:1 1 520px; min-width:260px; max-width:720px; width:min(720px, 60vw);
+      height:34px; padding:0 12px; border-radius:10px;
+      border:1px solid var(--border); background:var(--chip);
+    }
+    #sampleInput:focus{ outline:none; box-shadow:none; }
+    html[data-theme="dark"] #sampleInput{
+      flex:1 1 520px; min-width:260px; max-width:720px; width:min(720px, 60vw);
+      height:34px; padding:0 12px; border-radius:10px;
+      border:1px solid var(--border); background:var(--chip);
+    }
+    html[data-theme="dark"] #sampleInput::placeholder{ color:#bbb; }
+
+    .chips .chip{
+      display:inline-flex; align-items:center; height:28px; padding:0 10px; border-radius:999px;
+      border:1px solid var(--border); background:var(--chip); cursor:pointer; user-select:none; font-size:12px; white-space:nowrap;
+    }
+    .chips .chip.is-active{ background:var(--accent-weak, rgba(0,0,0,.06)); border-color: var(--accent, #888); }
+    html[data-theme="dark"] .chips .chip{ color:#fff; }
+    html[data-theme="dark"] .chips .chip.is-active{ background:rgba(255,255,255,.08); border-color: var(--accent, #ccc); }
+
+    #shuffleBtn{
+      height:34px; padding:0 12px; border-radius:10px;
+      border:1px solid var(--border); background:var(--chip);
+      display:inline-flex; align-items:center; gap:6px; font-weight:400;
+      box-shadow:var(--shadow); transition:transform .1s ease, box-shadow .1s ease;
+    }
+    #shuffleBtn:hover{ transform:translateY(-0.5px); box-shadow:0 2px 6px rgba(0,0,0,.08); }
+    html[data-theme="dark"] #shuffleBtn{ color:#fff; background:var(--chip,#1f1f1f); border-color:var(--border,#333); }
+
+#grid{ display:grid; gap:10px; align-items:start; grid-template-columns:repeat(2,1fr); }
+@media(min-width:1024px){
+  /* 데스크톱 3열 */
+  #grid{ grid-template-columns:repeat(3,1fr); }
+}
+
+
+    .font-card{
+      position:relative; display:grid; grid-template-rows:auto 1fr; gap:6px;
+      min-height:88px; padding:10px 12px; border-radius:12px;
+      background:var(--card); border:1px solid var(--border); box-shadow:var(--shadow);
+      cursor:pointer; text-align:left;
+    }
+    .font-title{ font-size:12px; color:var(--text-muted); }
+    .font-out{ font-size: clamp(13px,1.7vw,16px); line-height:1.25; white-space:pre-wrap; word-break:break-word; color:var(--text); }
+    .shuffle-btn{ position:absolute; top:6px; right:6px; font-size:13px; padding:2px 6px; line-height:1; border-radius:10px; border:1px solid var(--border); background:var(--chip); cursor:pointer; }
+    html[data-theme="dark"] .font-out{ color:#fff; }
+    html[data-theme="dark"] .font-title{ color:#cfcfcf; }
+    html[data-theme="dark"] .font-card{ background:#161616; border-color:#2a2a2a; box-shadow:none; }
+    html[data-theme="dark"] .shuffle-btn{ background:#2b2b2b; border-color:#5a5a5a; color:#fff; }
+
+    .empty{display:none;text-align:center;padding:16px;color:#666}
+    .infeed{margin:12px 0}
+    .infeed ins.adsbygoogle{display:block}
+    .morebar{ display:none; }
+
+    
+  
+/* Fallback toast styles (ID Generator-like) */
+.toast{
+  position:fixed; left:50%; bottom:20px;
+  transform:translateX(-50%) translateY(8px);
+  background:var(--toast-bg,#333); color:var(--toast-fg,#fff);
+  padding:8px 12px; border-radius:999px; font-size:13px;
+  box-shadow:0 4px 12px rgba(0,0,0,.2);
+  opacity:0; transition:opacity .15s ease, transform .15s ease;
+  z-index:1000; pointer-events:none;
+}
+.toast.show{ opacity:1; transform:translateX(-50%) translateY(0); }
+
+</style>
+</head>
+<body>
+  <header>
+    <div class="wrap h-inner">
+      <a href="./index.html" class="brand" aria-label="Home">Cute CopyMoji</a>
+      <button class="hamburger" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false"
+              onclick="(function(btn){document.body.classList.toggle('menu-open');btn.setAttribute('aria-expanded',document.body.classList.contains('menu-open'));})(this)">☰</button>
+      <nav class="nav desktop-nav" role="navigation" aria-label="Primary">
+        <a href="./kaomoji.html">顔文字</a>
+        <a href="./line.html">区切り線</a>
+        <a href="./replace.html">テキスト置換</a>
+        <a href="./emoji.html">絵文字</a>
+        <a href="./dotart.html">ドット / アスキー</a>
+        <a href="./fonts.html" aria-current="page">フォント</a>
+        <a href="./username.html">IDメーカー </a>
+        <a href="./favorites.html">お気に入り</a>
+        <a href="./settings.html">設定</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="./index.html" class="home-link"><span>ホーム</span></a>
+    <a href="./kaomoji.html"><span>顔文字</span></a>
+    <a href="./line.html"><span>区切り線</span></a>
+    <a href="./replace.html"><span>テキスト置換</span></a>
+    <a href="./emoji.html"><span>絵文字</span></a>
+    <a href="./dotart.html"><span>ドット / アスキーアート</span></a>
+    <a href="./fonts.html"><span>フォント</span></a>
+    <a href="./username.html"><span>IDメーカー</span></a>
+    <a href="./favorites.html"><span>お気に入り</span></a>
+    <a href="./settings.html"><span>設定</span></a>
+  </div>
+
+  <div class="backdrop" onclick="document.body.classList.remove('menu-open');document.querySelector('.hamburger')?.setAttribute('aria-expanded','false')"></div>
+
+  <main class="wrap">
+    <section class="kao-wrap" aria-labelledby="kaoTitle">
+      <div class="kao-head">
+        <h1 id="kaoTitle" class="kao-title">フォント</h1>
+        <p class="kao-desc">テキストを入力して英語/日本語セットを選択。カードをタップしてコピー。</p>
+      </div>
+
+      <div class="toolrow">
+        <label class="sr-only" for="sampleInput">Text</label>
+        <input id="sampleInput" type="search" placeholder="Type text (romaji OK for JP)… (click to copy)">
+        
+        <div id="filters" class="chips" style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-left:8px">
+          <button class="chip is-active" data-tab="en" type="button" aria-pressed="true">英語</button>
+          <button class="chip" data-tab="jp" type="button" aria-pressed="false">日本語</button>
+        </div>
+      </div>
+
+      <section id="grid" aria-live="polite"></section>
+      <div id="empty" class="empty">項目がありません。</div>
+
+      <div class="infeed only-desktop" aria-label="Sponsored">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-4324510515730355"
+             data-ad-slot="9132817506"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+               <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+    </section>
+
+    <!-- In-feed ad just above Quick access -->
+<div class="infeed" aria-label="Sponsored">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-4324510515730355"
+       data-ad-slot="9132817506"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+
+    <section class="quick-wrap" aria-labelledby="quickTitle">
+      <div class="quick-head">
+        <svg class="mi" viewBox="0 0 24 24" aria-hidden="true">
+          <path class="fill" d="M12 2l2 4 4 .7-3 3 .7 4L12 12l-3.7 1.7.7-4-3-3L10 6z"></path>
+          <path class="stroke" d="M12 2l2 4 4 .7-3 3 .7 4L12 12l-3.7 1.7.7-4-3-3L10 6z"></path>
+        </svg>
+        <h2 id="quickTitle" style="margin:0;font:inherit">クイックアクセス</h2>
+      </div>
+      <section class="quick">
+        <a class="panel quick-item" href="./index.html" style="text-align:center;padding:16px">
+          <svg class="mi big" viewBox="0 0 24 24" aria-hidden="true"><path class="stroke" d="M3 10.5L12 4l9 6.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>
+          <div style="margin-top:8px;font-weight:600">ホーム</div>
+        </a>
+        <a class="panel quick-item" href="./kaomoji.html" style="text-align:center;padding:16px">
+          <svg class="mi big" viewBox="0 0 24 24" aria-hidden="true">
+            <circle class="stroke" cx="12" cy="12" r="8.5"/>
+            <circle class="stroke" cx="9" cy="11" r="1"/>
+            <path class="stroke" d="M14.5 11.2h1.6"/>
+            <path class="stroke" d="M8.8 15c1.6 1.2 4.8 1.2 6.4 0"/>
+          </svg>
+          <div style="margin-top:8px;font-weight:600">顔文字</div>
+        </a>
+        <a class="panel quick-item" href="./line.html" style="text-align:center;padding:16px">
+          <svg class="mi big" viewBox="0 0 24 24" aria-hidden="true">
+            <path class="stroke" d="M4.5 6.5h15v8.2a3 3 0 0 1-3 3H11l-3.8 3v-3H7.5a3 3 0 0 1-3-3z"/>
+          </svg>
+          <div style="margin-top:8px;font-weight:600">区切り線</div>
+        </a>
+        <a class="panel quick-item" href="./replace.html" style="text-align:center;padding:16px">
+          <svg class="mi big" viewBox="0 0 24 24" aria-hidden="true">
+            <rect class="stroke" x="3" y="5" width="8" height="14" rx="2"/>
+            <path class="stroke" d="M5.5 15h4M7.5 9l1.5 4"/>
+            <path class="stroke" d="M13 12h8"/>
+            <path class="stroke" d="M18 7l3 3-3 3"/>
+          </svg>
+          <div style="margin-top:8px;font-weight:600">テキスト置換</div>
+        </a>
+        <a class="panel quick-item" href="./emoji.html" style="text-align:center;padding:16px">
+          <svg class="mi big" viewBox="0 0 24 24" aria-hidden="true">
+            <circle class="stroke" cx="12" cy="12" r="8.5"/>
+            <circle class="stroke" cx="9" cy="10" r="1"/>
+            <circle class="stroke" cx="15" cy="10" r="1"/>
+            <path class="stroke" d="M8.5 14.5c2 1.8 5 1.8 7 0"/>
+          </svg>
+          <div style="margin-top:8px;font-weight:600">絵文字</div>
+        </a>
+        <a class="panel quick-item" href="./dotart.html" style="text-align:center;padding:16px">
+          <svg class="mi big" viewBox="0 0 24 24" aria-hidden="true">
+            <circle class="stroke" cx="7" cy="7" r="1.2"/><circle class="stroke" cx="12" cy="7" r="1.2"/><circle class="stroke" cx="17" cy="7" r="1.2"/>
+            <circle class="stroke" cx="7" cy="12" r="1.2"/><circle class="stroke" cx="12" cy="12" r="1.2"/><circle class="stroke" cx="17" cy="12" r="1.2"/>
+          </svg>
+          <div style="margin-top:8px;font-weight:600">ドット / アスキーアート</div>
+        </a>
+        <a class="panel quick-item" href="./fonts.html" aria-current="page" style="text-align:center;padding:16px">
+          <svg class="mi big" viewBox="0 0 24 24" aria-hidden="true">
+            <path class="stroke" d="M4 18h4l2-5h4l2 5h4"/>
+            <path class="stroke" d="M10 13l2-7 2 7"/>
+          </svg>
+          <div style="margin-top:8px;font-weight:600">フォント</div>
+        </a>
+        <a class="panel quick-item" href="./username.html" style="text-align:center;padding:16px">
+          <svg class="mi big" viewBox="0 0 24 24" aria-hidden="true">
+            <rect class="stroke" x="3" y="6" width="18" height="12" rx="2"/>
+            <circle class="stroke" cx="8.5" cy="12" r="2"/>
+            <path class="stroke" d="M12.5 10h6M12.5 13h6M12.5 16h4"/>
+          </svg>
+          <div style="margin-top:8px;font-weight:600">IDメーカー</div>
+        </a>
+        <a class="panel quick-item" href="./favorites.html" style="text-align:center;padding:16px">
+          <svg class="mi big" viewBox="0 0 24 24" aria-hidden="true">
+            <path class="stroke" d="M12 3.5l2.4 4.9 5.4.8-3.9 3.9.9 5.5L12 16.9 7.2 18.6l.9-5.5L4.2 9.2l5.4-.8z"/>
+          </svg>
+          <div style="margin-top:8px;font-weight:600">お気に入り</div>
+        </a>
+        <a class="panel quick-item" href="./settings.html" style="text-align:center;padding:16px">
+          <svg class="mi big" viewBox="0 0 24 24" aria-hidden="true">
+            <circle class="stroke" cx="12" cy="12" r="7.5"/>
+            <circle class="stroke" cx="12" cy="12" r="2.5"/>
+            <path class="stroke" d="M12 3.5v3M20.5 12h-3M12 20.5v-3M3.5 12h3M17.4 6.6l-2.1 2.1M17.4 17.4l-2.1-2.1M6.6 17.4l2.1-2.1M6.6 6.6l2.1 2.1"/>
+          </svg>
+          <div style="margin-top:8px;font-weight:600">設定</div>
+        </a>
+      </section>
+    </section>
+
+    <div class="infeed only-desktop" aria-label="Sponsored">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-4324510515730355"
+           data-ad-slot="9132817506"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+<div class="infeed only-mobile" aria-label="Sponsored">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-4324510515730355"
+       data-ad-slot="9132817506"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+  </main>
+
+  <footer>
+    <div class="wrap f-inner">
+      <nav>
+        <a href="./privacy.html">プライバシーポリシー</a> · <a href="./terms.html">利用規約</a> · <a href="./contact.html">お問い合わせ</a>
+      </nav>
+      <small>© 2025 Cute CopyMoji. All rights reserved.</small>
+    </div>
+  </footer>
+
+  <button onclick="window.scrollTo({top:0,behavior:'smooth'})" id="topBtn" class="fab" title="Go to top">↑</button>
+  <button onclick="if(navigator.share){navigator.share({title:'Cute CopyMoji',url:location.href});}else{navigator.clipboard&&navigator.clipboard.writeText(location.href).then(()=>alert('Link copied!'));}" id="shareBtn" class="fab" title="Share">↗</button>
+
+  <script>
+  (function(){
+    function syncThemeColor(){
+      const hex = getComputedStyle(document.documentElement).getPropertyValue('--chrome').trim() || '#ffffff';
+      let meta = document.querySelector('meta[name="theme-color"]:not([media])');
+      if(!meta){ meta = document.createElement('meta'); meta.setAttribute('name','theme-color'); document.head.appendChild(meta); }
+      meta.setAttribute('content', hex);
+    }
+    syncThemeColor();
+    document.addEventListener('change', function(e){
+      if(e.target && e.target.matches('input[name="t"][data-ccm-theme]')) setTimeout(syncThemeColor, 0);
+    });
+    window.addEventListener('DOMContentLoaded', syncThemeColor);
+  })();
+  </script>
+
+  <div id="toast" class="toast" role="status" aria-live="polite">コピーしました！</div>
+
+  <script>
+  (function(){
+    const $=(s,el=document)=>el.querySelector(s);
+    const $$=(s,el=document)=>Array.from(el.querySelectorAll(s));
+    const EL={ input:$('#sampleInput'), grid:$('#grid'), empty:$('#empty'), filters:$('#filters'), shuffle:$('#shuffleBtn') };
+    let TAB='en'; let __didInitialFocus=false;
+
+    function stableSeedFrom(s){ let h=2166136261>>>0; for(let i=0;i<s.length;i++){ h^=s.charCodeAt(i); h=Math.imul(h,16777619);} return h>>>0; }
+    function mulberry32(a){ return function(){ var t=a+=0x6D2B79F5; t=Math.imul(t^(t>>>15),t|1); t^=t+Math.imul(t^(t>>>7),t|61); return ((t^(t>>>14))>>>0)/4294967296; }; }
+
+    function showToast(msg){ const t=$('#toast'); t.textContent=msg; t.classList.add('show'); clearTimeout(showToast._t); showToast._t=setTimeout(()=>t.classList.remove('show'),1000); }
+    async function copy(text){ try{ await navigator.clipboard.writeText(text); }catch(e){} showToast('コピーしました！'); }
+
+    function makeCard(title, text, cls, reshuffle){
+      const card=document.createElement('button'); card.type='button'; card.className='font-card'; card.title='Click to copy';
+      const t1=document.createElement('div'); t1.className='font-title'; t1.textContent=title;
+      const t2=document.createElement('div'); t2.className='font-out'; t2.textContent=text; if(cls) t2.classList.add(cls);
+      if(reshuffle){ const sh=document.createElement('button'); sh.type='button'; sh.className='shuffle-btn'; sh.title='Shuffle'; sh.textContent='↻'; sh.addEventListener('click',(e)=>{e.stopPropagation(); t2.textContent=reshuffle();}); card.appendChild(sh); }
+      card.append(t1,t2); card.addEventListener('click',()=>copy(t2.textContent)); return card;
+    }
+
+    function makeAdSlot(){
+  const wrap = document.createElement('div');
+  wrap.className = 'infeed';                    // only-* 안 씀 → 양쪽 다 노출
+  wrap.setAttribute('aria-label','Sponsored');
+  wrap.style.gridColumn = '1 / -1';             // 그리드 전체 폭 차지
+
+  const ins = document.createElement('ins');
+  ins.className = 'adsbygoogle';
+  ins.style.display = 'block';
+  ins.setAttribute('data-ad-client','ca-pub-4324510515730355');
+  ins.setAttribute('data-ad-slot','9132817506');
+  ins.setAttribute('data-ad-format','auto');
+  ins.setAttribute('data-full-width-responsive','true');
+  wrap.appendChild(ins);
+
+  // DOM에 붙인 뒤 광고 요청
+  setTimeout(()=>{ try{ (adsbygoogle = window.adsbygoogle || []).push({}); }catch(e){} }, 0);
+  return wrap;
+}
+
+
+    const mapRanges = {
+      buildAlphaDigits:(U,L,D=null)=>{ const up=[...'ABCDEFGHIJKLMNOPQRSTUVWXYZ'], lo=[...'abcdefghijklmnopqrstuvwxyz'], dg=[...'0123456789']; const m={}; up.forEach((ch,i)=>m[ch]=String.fromCodePoint(U+i)); lo.forEach((ch,i)=>m[ch]=String.fromCodePoint(L+i)); if(D!=null) dg.forEach((ch,i)=>m[dg[i]]=String.fromCodePoint(D+i)); return m; },
+      fullWidth:(()=>{ const m={}; for(let i=33;i<=126;i++){ m[String.fromCharCode(i)] = String.fromCharCode(0xFF00 + i - 0x20);} m[' '] = '　'; return m; })(),
+      circled:(()=>{ const m={}; const A='ABCDEFGHIJKLMNOPQRSTUVWXYZ', a='abcdefghijklmnopqrstuvwxyz', d='0123456789'; for(let i=0;i<26;i++){ m[A[i]]=String.fromCodePoint(0x24B6+i); m[a[i]]=String.fromCodePoint(0x24D0+i);} for(let i=0;i<10;i++){ m[d[i]]=String.fromCodePoint(0x2460+i);} m['0']='⓪'; return m; })(),
+      squared:(()=>{ const m={}; const A='ABCDEFGHIJKLMNOPQRSTUVWXYZ'; for(let i=0;i<26;i++){ const g=String.fromCodePoint(0x1F130+i); m[A[i]]=g; m[A[i].toLowerCase()]=g;} return m; })(),
+      negativeSquared:(()=>{ const m={}; const A='ABCDEFGHIJKLMNOPQRSTUVWXYZ'; for(let i=0;i<26;i++){ const g=String.fromCodePoint(0x1F170+i); m[A[i]]=g; m[A[i].toLowerCase()]=g;} return m; })(),
+      smallCaps:(()=>{ const src='abcdefghijklmnopqrstuvwxyz', dst='ᴀʙᴄᴅᴇꜰɢʜɪᴊᴋʟᴍɴᴏᴘǫʀsᴛᴜᴠᴡxʏᴢ', m={}; for(let i=0;i<src.length;i++){ m[src[i]]=dst[i]; m[src[i].toUpperCase()]=dst[i]; } return m; })(),
+      fancy:(()=>{ const src='abcdefghijklmnopqrstuvwxyz', dst='αɓςɗєƒɠɦɪʝƙʟɱɳσρϙɾʂƭᴜѵѡхყȥ', m={}; for(let i=0;i<src.length;i++){ const a=src[i]; m[a]=dst[i]; m[a.toUpperCase()]=dst[i]; } return m; })(),
+      unique:(()=>{ const pairs={a:'ꪖ',b:'᥇',c:'ς',d:'ɖ',e:'ꫀ',f:'ᠻ',g:'ᧁ',h:'ꫝ',i:'𝓲',j:'𝓳',k:'ꪜ',l:'ꪶ',m:'ꪑ',n:'ꪀ',o:'ꪮ',p:'ρ',q:'ꪇ',r:'𝘳',s:'ˢ',t:'𝓽',u:'ꪊ',v:'ꪙ',w:'᭙',x:'᥊',y:'ꪗ',z:'ƺ'}, m={}; for(const [k,v] of Object.entries(pairs)){ m[k]=v; m[k.toUpperCase()]=v; } return m; })(),
+      superscripts:(()=>{ const m={'0':'⁰','1':'¹','2':'²','3':'³','4':'⁴','5':'⁵','6':'⁶','7':'⁷','8':'⁸','9':'⁹',a:'ᵃ',b:'ᵇ',c:'ᶜ',d:'ᵈ',e:'ᵉ',f:'ᶠ',g:'ᵍ',h:'ʰ',i:'ⁱ',j:'ʲ',k:'ᵏ',l:'ˡ',m:'ᵐ',n:'ⁿ',o:'ᵒ',p:'ᵖ',r:'ʳ',s:'ˢ',t:'ᵗ',u:'ᵘ',v:'ᵛ',w:'ʷ',x:'ˣ',y:'ʸ',z:'ᶻ',A:'ᴬ',B:'ᴮ',D:'ᴰ',E:'ᴱ',G:'ᴳ',H:'ᴴ',I:'ᴵ',J:'ᴶ',K:'ᴷ',L:'ᴸ',M:'ᴹ',N:'ᴺ',O:'ᴼ',P:'ᴾ',R:'ᴿ',T:'ᵀ',U:'ᵁ',V:'ⱽ',W:'ᵂ'}; return m; })(),
+    };
+    const mapByTable=(s,t)=>[...s].map(ch=>t[ch] ?? ch).join('');
+    const combineAbove=(s,marks)=>{ const suf=marks.join(''); return [...s].map(ch=>/\s/.test(ch)?ch:(ch+suf)).join(''); };
+
+    
+
+// ---- Extra helpers for new EN styles ----
+
+// Upside-down flip map (subset + fallbacks)
+const FLIP_MAP = {
+  'a':'ɐ','b':'q','c':'ɔ','d':'p','e':'ǝ','f':'ɟ','g':'ƃ','h':'ɥ','i':'ᴉ','j':'ɾ','k':'ʞ','l':'ʃ','m':'ɯ','n':'u','o':'o','p':'d','q':'b','r':'ɹ','s':'s','t':'ʇ','u':'n','v':'ʌ','w':'ʍ','x':'x','y':'ʎ','z':'z',
+  'A':'∀','B':'𐐒','C':'Ɔ','D':'◖','E':'Ǝ','F':'Ⅎ','G':'פ','H':'H','I':'I','J':'ſ','K':'ʞ','L':'˥','M':'W','N':'N','O':'O','P':'Ԁ','Q':'Ὁ','R':'ᴚ','S':'S','T':'┴','U':'∩','V':'Λ','W':'M','X':'X','Y':'⅄','Z':'Z',
+  '0':'0','1':'Ɩ','2':'ᄅ','3':'Ɛ','4':'ㄣ','5':'ϛ','6':'9','7':'ㄥ','8':'8','9':'6',
+  '.':'˙',',':'\'','\'':',','"':',,','`':',',';':'؛','!':'¡','?':'¿','(':')',')':'(','[':']',']':'[','{':'}','}':'{','<':'>','>':'<','&':'⅋','_':'‾'
+};
+function flipText(s){
+  const arr=[...s].reverse().map(ch=>FLIP_MAP[ch] ?? FLIP_MAP[ch.toLowerCase?.()||''] ?? ch);
+  return arr.join('');
+}
+
+// Mirror map (left-right mirrored look; best-effort coverage)
+const MIRROR_MAP = {
+  'A':'∀','B':'ꓭ','C':'Ↄ','D':'◖','E':'Ǝ','F':'ꟻ','G':'Ɠ','H':'H','I':'I','J':'ſ','K':'⋊','L':'⅃','M':'W','N':'Ͷ','O':'O','P':'Ԁ','Q':'ǫ','R':'Я','S':'Ꙅ','T':'ꓕ','U':'∩','V':'Ʌ','W':'M','X':'X','Y':'ʎ','Z':'𐑒',
+  'a':'ɒ','b':'d','c':'ↄ','d':'b','e':'ɘ','f':'ʇ','g':'ɟ','h':'ʜ','i':'i','j':'ɾ','k':'ʞ','l':'|','m':'m','n':'u','o':'o','p':'q','q':'p','r':'ɿ','s':'ꙅ','t':'ƚ','u':'n','v':'ʌ','w':'w','x':'x','y':'ʏ','z':'ȥ'
+};
+function mirrorText(s){ return [...s].map(ch=>MIRROR_MAP[ch] ?? MIRROR_MAP[ch.toLowerCase?.()||''] ?? ch).join(''); }
+
+// Fat Text mapping (heavy stylistic glyphs)
+const FAT_MAP = (()=>{
+  const pairs = {
+    a:'ᗩ', b:'ᗷ', c:'ᑕ', d:'ᗪ', e:'ᗴ', f:'ᖴ', g:'Ꮆ', h:'ᕼ', i:'Ꭵ', j:'ᒍ',
+    k:'ᛕ', l:'ᒪ', m:'ᗰ', n:'ᑎ', o:'ᗝ', p:'ᑭ', q:'ᑫ', r:'ᖇ', s:'ᔕ', t:'丅',
+    u:'ᑌ', v:'ᐯ', w:'ᗯ', x:'᙭', y:'Ƴ', z:'乙'
+  };
+  const m={}; for(const [k,v] of Object.entries(pairs)){ m[k]=v; m[k.toUpperCase()]=v; }
+  return m;
+})();
+
+const stylesEN=[
+      {key:'random', name:'random', cls:'', fn:(s)=>randomMixed(s)},
+      {key:'sans',          name:'sans',          cls:'math-font',  fn:(s)=>mapByTable(s, mapRanges.buildAlphaDigits(0x1D5A0,0x1D5BA,0x1D7E2))},
+      {key:'bold',          name:'bold',          cls:'math-font',  fn:(s)=>mapByTable(s, mapRanges.buildAlphaDigits(0x1D400,0x1D41A,0x1D7CE))},
+      {key:'smallCaps',     name:'smallCaps',     cls:'',           fn:(s)=>mapByTable(s, mapRanges.smallCaps)},
+      {key:'fullWidth',     name:'fullWidth',     cls:'',           fn:(s)=>mapByTable(s, mapRanges.fullWidth)},
+      {key:'bubbles',       name:'bubbles',       cls:'',           fn:(s)=>mapByTable(s, mapRanges.circled)},
+      {key:'square',        name:'square',        cls:'',           fn:(s)=>mapByTable(s, mapRanges.squared)},
+      {key:'negative',      name:'negative',      cls:'',           fn:(s)=>mapByTable(s, mapRanges.negativeSquared)},
+      {key:'fancy',         name:'fancy',         cls:'',           fn:(s)=>mapByTable(s, mapRanges.fancy)},
+      {key:'unique',        name:'unique',        cls:'',           fn:(s)=>mapByTable(s, mapRanges.unique)},
+      {key:'smileDots',     name:'smileDots',     cls:'',           fn:(s)=>combineAbove(s, ['̆','̈'])},
+      {key:'sparkle',       name:'sparkle',       cls:'',           fn:(s)=>combineAbove(s, ['̇','⃰'])},
+      {key:'ring',          name:'ring',          cls:'',           fn:(s)=>combineAbove(s, ['̊'])},
+      {key:'tilde',         name:'tilde',         cls:'',           fn:(s)=>combineAbove(s, ['̃'])},
+      {key:'encloseCircle', name:'encloseCircle', cls:'',           fn:(s)=>combineAbove(s, ['⃝'])},
+      {key:'heartAbove',    name:'heartAbove',    cls:'',           fn:(s)=>combineAbove(s, ['ᩚ'])},
+      {key:'heartLetter',   name:'heartLetter',   cls:'',           fn:(s)=>[...s].map(ch=>/\s/.test(ch)?ch:('♡'+'ͪ')).join('')},
+      {key:'ribbon',        name:'ribbon',        cls:'',           fn:(s)=>combineAbove(s, ['ྀ','ི'])},
+      {key:'italic',        name:'italic',        cls:'math-font',  fn:(s)=>mapByTable(s, mapRanges.buildAlphaDigits(0x1D434,0x1D44E,null))},
+      {key:'boldItalic',    name:'boldItalic',    cls:'math-font',  fn:(s)=>mapByTable(s, mapRanges.buildAlphaDigits(0x1D468,0x1D482,null))},
+      {key:'script',        name:'script',        cls:'script-font',fn:(s)=>mapByTable(s, mapRanges.buildAlphaDigits(0x1D49C,0x1D4B6,null))},
+      {key:'boldScript',    name:'boldScript',    cls:'script-font',fn:(s)=>mapByTable(s, mapRanges.buildAlphaDigits(0x1D4D0,0x1D4EA,null))},
+      {key:'gothic',        name:'gothic',        cls:'fraktur-font',fn:(s)=>mapByTable(s, mapRanges.buildAlphaDigits(0x1D504,0x1D51E,null))},
+      {key:'boldGothic',    name:'boldGothic',    cls:'fraktur-font',fn:(s)=>mapByTable(s, mapRanges.buildAlphaDigits(0x1D56C,0x1D586,null))},
+      {key:'superscript',   name:'superscript',   cls:'',           fn:(s)=>mapByTable(s, mapRanges.superscripts)},
+      {key:'underline',     name:'underline',     cls:'',           fn:(s)=>[...s].map(ch=>ch+'̲').join('')},
+      {key:'double',        name:'double',        cls:'math-font',  fn:(s)=>mapByTable(s, mapRanges.buildAlphaDigits(0x1D538,0x1D552,null))},
+    
+      {key:'mono', name:'Mono Space', cls:'math-font', fn:(s)=>mapByTable(s, mapRanges.buildAlphaDigits(0x1D670,0x1D68A,0x1D7F6))},
+      {key:'flip', name:'Luni Tools Flip', cls:'', fn:(s)=>flipText(s)},
+      {key:'reverse', name:'Reverse Mirrors', cls:'', fn:(s)=>[...s].reverse().join('')},
+      {key:'mirror', name:'Luni Tools Mirror', cls:'', fn:(s)=>mirrorText(s)},
+      {key:'fatText', name:'Fat Text', cls:'', fn:(s)=>mapByTable(s, FAT_MAP)},];
+    const fnByKey={}; stylesEN.forEach(s=>fnByKey[s.key]=s.fn);
+    const RANDOM_SAFE_POOL=['fullWidth','bubbles','square','negative','smallCaps','fancy','unique','sans','bold','smileDots','sparkle','ring','tilde','encloseCircle','heartAbove','ribbon'];
+    function randomMixed(str){ const pool=RANDOM_SAFE_POOL; return [...str].map(ch=>{ if(/\s/.test(ch)) return ch; const key=pool[(Math.random()*pool.length)|0]; return fnByKey[key](ch); }).join(''); }
+
+    const kanaMap={'あ':['क॑'],'い':['ഗ','ɭ','ɿ'],'う':['ɔ','੭ੇ','כֿ'],'え':['ʑ','ɀ'],'お':[],'か':['תʅ'],'き':['₹'],'く':['ㄑ'],'け':['ιϯ'],'こ':['ˉ'],'さ':['र','ट','ਟ','ㄜ','ਟੋ'],'し':['ს','ᒐ','㇟'],'す':['व','ਕ','ਭ','ತ'],'せ':['ㄝ','ए'],'そ':['౾','ਵ','ƺ','દૅ'],'た':['ƒ'],'ち':['ㄘ','ƾ','ƽ','ᖬ'],'つ':['ᑐ','ᘄ'],'て':['ح','ᘔ','Ꞇ'],'で':['ڃ'],'と':['೬','ᘧ'],'な':['ˉ','Ժˋ','ד֝','ժ՝'],'に':['ឌេ','ɭ','ˉ','ɭ'],'ぬ':[],'ね':['൹'],'の':['၈'],'は':['বে','ਰਿ','լਕ'],'ひ':['ʊ','Ʊ','ᘮ'],'ふ':['ζ','৴ડેヽ'],'へ':['ㄟ'],'ほ':['इि','ફિ','ਰਿੈ','ਝि','ਙि'],'ま':[],'み':['ਗ','ਮ','મ','೫'],'む':['ఏౌ'],'め':[],'も':['₺','Ⱡ','ŧ','ᵵ'],'や':['兯'],'ゆ':[],'よ':[],'ら':['ᣡ','ʖˋ'],'り':['ױ','ιյ','ﾚ)','၊','၂'],'る':['ਡ','ᵹ','ਛ','इ','ʓ'],'れ':['փ','ૠ'],'ろ':['Ʒ','ਤ','ჳ','ㄋ'],'わ':[],'を':['ξ'],'ん':['ƕ','Խ','Ⴡ','ᖾ','ꩢ','խ','๘']};
+    function convertKana(str,mode='random'){ return [...str].map(ch=>{ const arr=kanaMap[ch]; if(!arr||arr.length===0) return ch; if(mode==='first') return arr[0]; return arr[(Math.random()*arr.length)|0]; }).join(''); }
+    function convertKanaStable(str, seed){ const rnd = mulberry32(seed>>>0); return [...str].map(ch=>{ const arr=kanaMap[ch]; if(!arr||arr.length===0) return ch; return arr[(rnd()*arr.length)|0]; }).join(''); }
+    function romajiToHiragana(input){
+      const s = (input||'').toLowerCase();
+      let i=0, out='';
+      function isVowel(ch){ return /[aeiou]/.test(ch); }
+      while(i < s.length){
+        const ch = s[i];
+        if(/[^a-z]/.test(ch)){ out += ch; i++; continue; }
+        if(ch==='n'){
+          const next = s[i+1]||'';
+          if(next==='' || (!isVowel(next) && next!=='y')){ out+='ん'; i++; continue; }
+        }
+        if(i+1<s.length && s[i]===s[i+1] && !isVowel(s[i]) && s[i]!=='n'){ out+='っ'; i++; continue; }
+        const tri = s.slice(i,i+3);
+        const triMap = {'kya':'きゃ','kyu':'きゅ','kyo':'きょ','gya':'ぎゃ','gyu':'ぎゅ','gyo':'ぎょ','sha':'しゃ','shu':'しゅ','sho':'しょ','ja':'じゃ','ju':'じゅ','jo':'じょ','cha':'ちゃ','chu':'ちゅ','cho':'ちょ','nya':'にゃ','nyu':'にゅ','nyo':'にょ','hya':'ひゃ','hyu':'ひゅ','hyo':'ひょ','mya':'みゃ','myu':'みゅ','myo':'みょ','rya':'りゃ','ryu':'りゅ','ryo':'りょ','bya':'びゃ','byu':'びゅ','byo':'びょ','pya':'ぴゃ','pyu':'ぴゅ','pyo':'ぴょ','tsa':'つぁ','tsi':'つぃ','tse':'つぇ','tso':'つぉ','fa':'ふぁ','fi':'ふぃ','fe':'ふぇ','fo':'ふぉ','wi':'うぃ','we':'うぇ','wo':'を','ti':'てぃ','tu':'とぅ','di':'でぃ','du':'どぅ'};
+        if(triMap[tri]){ out += triMap[tri]; i+=3; continue; }
+        const bi = s.slice(i,i+2);
+        const biMap = {'shi':'し','chi':'ち','ts':'つ','fu':'ふ','ji':'じ'};
+        if(biMap[bi]){ out += biMap[bi]; i+=2; continue; }
+        const cv = s.slice(i,i+2);
+        const rows = {k:'かきくけこ', s:'さしすせそ', t:'たちつてと', n:'なにぬねの', h:'はひふへほ', m:'まみむめも', y:'やいゆえよ', r:'らりるれろ', w:'わゐうゑを', g:'がぎぐげご', z:'ざじずぜぞ', d:'だぢづでど', b:'ばびぶべぼ', p:'ぱぴぷぺぽ'};
+        if(rows[cv[0]] && isVowel(cv[1])){ const idx='aiueo'.indexOf(cv[1]); out += rows[cv[0]][idx]; i+=2; continue; }
+        const v = s[i]; const vowMap={a:'あ', i:'い', u:'う', e:'え', o:'お'}; if(vowMap[v]){ out += vowMap[v]; i++; continue; }
+        out += s[i]; i++;
+      }
+      return out;
+    }
+    function hiraToKata(str){ return str.replace(/[ぁ-ゖ]/g, ch => String.fromCharCode(ch.charCodeAt(0)+0x60)); }
+
+    const CIRCLED_KATA=(()=>{ const A='アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヰヱヲ'; const CP_START=0x32D0; const m={}; for(let i=0;i<A.length;i++){ m[A[i]]=String.fromCodePoint(CP_START+i);} return m; })();
+    const DAKUTEN='゙', HANDAKUTEN='゚';
+    const KATA_VOICED_BASE={'ガ':'カ','ギ':'キ','グ':'ク','ゲ':'ケ','ゴ':'コ','ザ':'サ','ジ':'シ','ズ':'ス','ゼ':'セ','ゾ':'ソ','ダ':'タ','ヂ':'チ','ヅ':'ツ','デ':'テ','ド':'ト','バ':'ハ','ビ':'ヒ','ブ':'フ','ベ':'ヘ','ボ':'ホ','ヴ':'ウ'};
+    const KATA_SEMI_BASE={'パ':'ハ','ピ':'ヒ','プ':'フ','ペ':'ヘ','ポ':'ホ'};
+    function toCircledKatakana(input){
+      const kata=hiraToKata(romajiToHiragana(input)); let out='';
+      for(const ch of kata){
+        if(KATA_VOICED_BASE[ch]){ const base=KATA_VOICED_BASE[ch]; const circ=CIRCLED_KATA[base] ?? base; out+=circ+DAKUTEN; continue; }
+        if(KATA_SEMI_BASE[ch]){ const base=KATA_SEMI_BASE[ch]; const circ=CIRCLED_KATA[base] ?? base; out+=circ+HANDAKUTEN; continue; }
+        out+=CIRCLED_KATA[ch] ?? (ch==='ン' ? ch+'⃝' : ch);
+      }
+      return out;
+    }
+    const KATA_HALF_BASE={'ア':'ｱ','イ':'ｲ','ウ':'ｳ','エ':'ｴ','オ':'ｵ','カ':'ｶ','キ':'ｷ','ク':'ｸ','ケ':'ｹ','コ':'ｺ','サ':'ｻ','シ':'ｼ','ス':'ｽ','セ':'ｾ','ソ':'ｿ','タ':'ﾀ','チ':'ﾁ','ツ':'ﾂ','テ':'ﾃ','ト':'ﾄ','ナ':'ﾅ','ニ':'ﾆ','ヌ':'ﾇ','ネ':'ﾈ','ノ':'ﾉ','ハ':'ﾊ','ヒ':'ﾋ','フ':'ﾌ','ヘ':'ﾍ','ホ':'ﾎ','マ':'ﾏ','ミ':'ﾐ','ム':'ﾑ','メ':'ﾒ','モ':'ﾓ','ヤ':'ﾔ','ユ':'ﾕ','ヨ':'ﾖ','ラ':'ﾗ','リ':'ﾘ','ル':'ﾙ','レ':'ﾚ','ロ':'ﾛ','ワ':'ﾜ','ヲ':'ｦ','ン':'ﾝ','ァ':'ｧ','ィ':'ｨ','ゥ':'ｩ','ェ':'ｪ','ォ':'ｫ','ャ':'ｬ','ュ':'ｭ','ョ':'ｮ','ッ':'ｯ','ー':'ｰ','・':'･','。':'｡','、':'､','「':'｢','」':'｣','゛':'ﾞ','゜':'ﾟ'};
+    const KATA_HALF_VOICED={'ガ':'ｶﾞ','ギ':'ｷﾞ','グ':'ｸﾞ','ゲ':'ｹﾞ','ゴ':'ｺﾞ','ザ':'ｻﾞ','ジ':'ｼﾞ','ズ':'ｽﾞ','ゼ':'ｾﾞ','ゾ':'ｿﾞ','ダ':'ﾀﾞ','ヂ':'ﾁﾞ','ヅ':'ﾂﾞ','デ':'ﾃﾞ','ド':'ﾄﾞ','バ':'ﾊﾞ','ビ':'ﾋﾞ','ブ':'ﾌﾞ','ベ':'ﾍﾞ','ボ':'ﾎﾞ','ヴ':'ｳﾞ'};
+    const KATA_HALF_SEMI={'パ':'ﾊﾟ','ピ':'ﾋﾟ','プ':'ﾌﾟ','ペ':'ﾍﾟ','ポ':'ﾎﾟ'};
+    function toHalfwidthKatakana(input){
+      const kata=hiraToKata(romajiToHiragana(input)); let out='';
+      for(const ch of kata){
+        if(KATA_HALF_VOICED[ch]) out+=KATA_HALF_VOICED[ch];
+        else if(KATA_HALF_SEMI[ch]) out+=KATA_HALF_SEMI[ch];
+        else out+=KATA_HALF_BASE[ch] ?? ch;
+      }
+      return out;
+    }
+
+    const jpDecor = {
+      underline:   (s)=>[...s].map(ch=>/\s/.test(ch)?ch:(ch+'̲')).join(''),
+      sparkle:     (s)=>[...s].map(ch=>/\s/.test(ch)?ch:(ch+'̇⃰')).join(''),
+      ring:        (s)=>[...s].map(ch=>/\s/.test(ch)?ch:(ch+'̊')).join(''),
+      tilde:       (s)=>[...s].map(ch=>/\s/.test(ch)?ch:(ch+'̃')).join(''),
+      heartAbove:  (s)=>[...s].map(ch=>/\s/.test(ch)?ch:(ch+'ᩚ')).join(''),
+      ribbon:      (s)=>[...s].map(ch=>/\s/.test(ch)?ch:(ch+'ྀི')).join(''),
+    };
+    const JP_RANDOM_FUNCS=[(x)=>jpDecor.underline(x),(x)=>jpDecor.sparkle(x),(x)=>jpDecor.ring(x),(x)=>jpDecor.tilde(x),(x)=>jpDecor.heartAbove(x),(x)=>jpDecor.ribbon(x),(x)=>convertKanaStable(romajiToHiragana(x), stableSeedFrom('symbol:'+x)),(x)=>toCircledKatakana(x),(x)=>toHalfwidthKatakana(x)];
+
+    function mkGrid(){ const el=document.getElementById('grid'); if(!el){ const s=document.createElement('section'); s.id='grid'; s.setAttribute('aria-live','polite'); document.querySelector('.kao-wrap').appendChild(s); return s; } return el; }
+    function renderEN(){ const txt=(EL.input.value??'').trim(); 
+    const grid=mkGrid(); grid.innerHTML='';
+const frag=document.createDocumentFragment();
+
+const isMobile = window.matchMedia('(max-width:1023px)').matches;
+const STEP = isMobile ? 18 : 12;   // 몇 카드마다 1개
+const MAX  = 3;                    // 최대 몇 개까지
+let count = 0, adCount = 0;
+
+for(const st of stylesEN){
+  const base=txt||st.name;
+  const out=st.fn(base);
+  const resh=(st.key==='random')?()=>randomMixed(base):null;
+  frag.appendChild(makeCard(st.name,out,st.cls,resh));
+  count++;
+  if(count % STEP === 0 && adCount < MAX){
+    frag.appendChild(makeAdSlot());
+    adCount++;
+  }
+}
+// 리스트가 짧아 간격을 못 타면 최소 1개 보장(원치 않으면 이 if 제거)
+if(count && adCount===0){ frag.appendChild(makeAdSlot()); }
+
+grid.appendChild(frag);
+EL.empty.style.display=stylesEN.length?'none':'block';
+    }
+    
+    function renderJP(){ const base=(EL.input.value||'かたかな').trim(); 
+    
+    const grid=mkGrid(); grid.innerHTML=''; const frag=document.createDocumentFragment(); const mkRandom=()=>{ const f=JP_RANDOM_FUNCS[(Math.random()*JP_RANDOM_FUNCS.length)|0]; return f(base); }; frag.appendChild(makeCard('Random', mkRandom(), '', mkRandom)); const rows=[ {name:'Symbol Font', out:convertKanaStable(romajiToHiragana(base), stableSeedFrom('symbol:'+base)), reshuffle:()=>convertKanaStable(romajiToHiragana(base), (Date.now()&0xffffffff))}, {name:'circledKatakana', out:toCircledKatakana(base)}, {name:'halfwidthKatakana', out:toHalfwidthKatakana(base)} ]; for(const r of rows){ frag.appendChild(makeCard(r.name, r.out, '', r.reshuffle)); } grid.appendChild(frag); EL.empty.style.display='none'; }
+
+    function setTab(next){
+      const anchor=document.querySelector('.kao-wrap') || document.body;
+      const xBefore=window.scrollX; const topBefore=anchor.getBoundingClientRect().top;
+      TAB=next;
+      $$('#filters .chip').forEach(b=>b.classList.toggle('is-active', b.dataset.tab===next));
+      $$('#filters .chip').forEach(b=>b.setAttribute('aria-pressed', String(b.dataset.tab===next)));
+      EL.input.placeholder='Type text (romaji OK for JP)… (click to copy)';
+      (next==='en'?renderEN():renderJP());
+      try{ if(!__didInitialFocus){ EL.input.focus?.({preventScroll:true}); __didInitialFocus=true; } }catch(e){}
+      requestAnimationFrame(()=>{ const topAfter=anchor.getBoundingClientRect().top; const dy=topAfter-topBefore; if(dy!==0) window.scrollBy(0,dy); if(window.scrollX!==xBefore) window.scrollTo(xBefore, window.scrollY); });
+    }
+
+    EL.filters.addEventListener('click',(e)=>{ const btn=e.target.closest('[data-tab]'); if(!btn) return; setTab(btn.dataset.tab); });
+    EL.input.addEventListener('input',()=> (TAB==='en'?renderEN():renderJP()));
+    if(EL.shuffle){ EL.shuffle.addEventListener('click',()=> (TAB==='en'?renderEN():renderJP())); }
+
+    setTab('en');
+  })();
+  </script>
+</body>
+</html>

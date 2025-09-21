@@ -1,0 +1,497 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>즐겨찾기 — Cute CopyMoji🌸</title>
+  <meta name="description" content="카오모지(이모티콘), 라인, 텍스트 대치, 이모지, 도트/아스키 아트에서 ★로 저장한 항목을 한곳에서 확인하세요. 저장 위치별로 필터링할 수 있습니다.">
+
+  <link rel="canonical" href="https://cutecopymoji.com/ko/favorites.html" />
+
+  <!-- Favicon / App icons -->
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <!-- Theme colors -->
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#121212" media="(prefers-color-scheme: dark)">
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Cute CopyMoji🌸">
+  <meta property="og:title" content="즐겨찾기 — Cute CopyMoji🌸">
+  <meta property="og:description" content="★로 저장한 항목을 한곳에서 확인하고, 저장 위치별로 필터링하세요.">
+  <meta property="og:url" content="https://cutecopymoji.com/ko/favorites.html">
+  <meta property="og:locale" content="ko_KR">
+  <meta property="og:image" content="https://cutecopymoji.com/og.png">
+  <meta property="og:image:alt" content="Cute CopyMoji🌸">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="즐겨찾기 — Cute CopyMoji🌸">
+  <meta name="twitter:description" content="저장 위치별 필터링 지원.">
+  <meta name="twitter:image" content="https://cutecopymoji.com/og.png">
+
+  <!-- Styles / Scripts -->
+  <link rel="stylesheet" href="../assets/core.css?v=4">
+  <script src="../assets/core.js" defer></script>
+
+  <!-- Hreflang (7) -->
+<link rel="alternate" hreflang="x-default" href="https://cutecopymoji.com/en/favorites.html" />
+<link rel="alternate" hreflang="en" href="https://cutecopymoji.com/en/favorites.html" />
+<link rel="alternate" hreflang="ko" href="https://cutecopymoji.com/ko/favorites.html" />
+<link rel="alternate" hreflang="ja" href="https://cutecopymoji.com/ja/favorites.html" />
+<link rel="alternate" hreflang="es" href="https://cutecopymoji.com/es/favorites.html" />
+<link rel="alternate" hreflang="pt" href="https://cutecopymoji.com/pt/favorites.html" />
+<link rel="alternate" hreflang="fr" href="https://cutecopymoji.com/fr/favorites.html" />
+<link rel="alternate" hreflang="de" href="https://cutecopymoji.com/de/favorites.html" />
+
+  <!-- AdSense (loader once per page) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4324510515730355" crossorigin="anonymous"></script>
+
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <style>
+    :root{ --toast-bg: var(--accent); --toast-fg: var(--chrome); }
+    html[data-theme="dark"]{ --toast-bg: var(--accent); --toast-fg: #fff; }
+
+    .fav-wrap{ margin:14px 0 0; }
+    .fav-head{ margin:0 0 6px; }
+    .fav-title{ margin:0; font-size:clamp(16px,2vw,18px); line-height:1.25; font-weight:700; }
+    .fav-desc{ margin:4px 0 12px; color:var(--text-muted); font-size:clamp(12px,1.6vw,13px) }
+
+    .toolrow{ display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin:6px 0 12px }
+    .chips{ display:flex; flex-wrap:wrap; gap:6px; align-items:center; }
+    .chip{
+      display:inline-flex; align-items:center; height:28px; padding:0 10px; border-radius:999px;
+      border:1px solid var(--border); background:var(--chip); cursor:pointer; user-select:none; font-size:12px; white-space:nowrap;
+    }
+    .chip.is-active{ background:var(--accent-weak, rgba(0,0,0,.06)); border-color: var(--accent, #888); }
+    html[data-theme="dark"] .chip{ color:#fff; }
+    html[data-theme="dark"] .chip.is-active{ background:rgba(255,255,255,.08); border-color: var(--accent, #ccc); }
+
+    .search{ flex:1 1 280px; min-width:220px; max-width:520px; height:34px; padding:0 12px; border-radius:10px; border:1px solid var(--border); background:var(--chip); }
+    html[data-theme="dark"] .search{ background:#1b1b1b; color:#fff; border-color:#333; }
+    html[data-theme="dark"] .search::placeholder{ color:#bbb; }
+
+    #grid{ display:grid; gap:12px; align-items:start; grid-template-columns:1fr; }
+    @media(min-width:1024px){ #grid{ grid-template-columns:repeat(3,1fr);} }
+
+    .card{
+      position:relative; min-height:88px; padding:10px 12px; border-radius:12px;
+      background:var(--card); border:1px solid var(--border); box-shadow:var(--shadow);
+      cursor:pointer; text-align:left; display:grid; grid-template-rows:auto 1fr auto; gap:8px;
+    }
+    .t{ font-size: clamp(13px,1vw,13px); line-height:1.25; white-space:pre-wrap; word-break:break-word; color:var(--text); text-align: center; margin: auto 0;}
+    html[data-theme="dark"] .t{ color:#fff; }
+    .title{ font-size:12px; color:var(--text-muted); }
+    .star{ position:absolute; top:6px; right:6px; font-size:12px; padding:2px 6px; line-height:1; border-radius:10px; border:1px solid var(--border); background:var(--chip); cursor:pointer; }
+    html[data-theme="dark"] .star{ background:#2b2b2b; border-color:#5a5a5a; color:#fff; }
+    .badges{ display:flex; flex-wrap:wrap; gap:6px; }
+    .badge{ font-size:11px; padding:2px 6px; border-radius:999px; background:var(--chip); border:1px solid var(--border); }
+    html[data-theme="dark"] .badge{ color:#fff; }
+
+    .empty{display:none;text-align:center;padding:16px;color:#666}
+    .infeed{margin:12px 0}
+    .infeed ins.adsbygoogle{display:block}
+
+    /* Toast */
+    .toast{ position:fixed; left:50%; bottom:18px; transform:translateX(-50%);
+      background:var(--toast-bg); color:var(--toast-fg);
+      padding:8px 12px; border-radius:10px; border:1px solid var(--border);
+      font-size:13px; line-height:1; opacity:0; pointer-events:none; transition:opacity .2s ease; z-index:9999; }
+    .toast.show{ opacity:1; }
+
+    /* === FAVORITES: 카드 높이 통일 === */
+    #grid .card{
+      height: clamp(360px, 82vw, 320px) !important;
+      display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
+      text-align: center;
+    }
+    @media(min-width:1024px){
+      #grid .card{ height: clamp(260px, 38vw, 320px) !important; }
+    }
+
+    /* Mobile gutter so cards don't touch the right edge */
+    @media (max-width: 1023px){
+      main.wrap{
+        padding-left: max(12px, env(safe-area-inset-left));
+        padding-right: max(12px, env(safe-area-inset-right));
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap h-inner">
+      <a href="./index.html" class="brand" aria-label="홈">Cute CopyMoji</a>
+      <button class="hamburger" aria-label="메뉴 열기" aria-controls="mobileMenu" aria-expanded="false"
+              onclick="(function(btn){document.body.classList.toggle('menu-open');btn.setAttribute('aria-expanded',document.body.classList.contains('menu-open'));})(this)">☰</button>
+      <nav class="nav desktop-nav" role="navigation" aria-label="주요 메뉴">
+        <a href="./kaomoji.html">카오모지</a>
+        <a href="./line.html">라인</a>
+        <a href="./replace.html">텍스트 대치</a>
+        <a href="./emoji.html">이모지</a>
+        <a href="./dotart.html">도트/아스키</a>
+        <a href="./fonts.html">폰트</a>
+        <a href="./username.html">아이디 생성기</a>
+        <a href="./favorites.html" aria-current="page">즐겨찾기</a>
+        <a href="./settings.html">설정</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="./index.html" class="home-link"><span>홈</span></a>
+    <a href="./kaomoji.html"><span>카오모지</span></a>
+    <a href="./line.html"><span>라인</span></a>
+    <a href="./replace.html"><span>텍스트 대치</span></a>
+    <a href="./emoji.html"><span>이모지</span></a>
+    <a href="./dotart.html"><span>도트/아스키</span></a>
+    <a href="./fonts.html"><span>폰트</span></a>
+    <a href="./username.html"><span>아이디 생성기</span></a>
+    <a href="./favorites.html"><span>즐겨찾기</span></a>
+    <a href="./settings.html"><span>설정</span></a>
+  </div>
+
+  <div class="backdrop" onclick="document.body.classList.remove('menu-open');document.querySelector('.hamburger')?.setAttribute('aria-expanded','false')"></div>
+
+  <main class="wrap">
+    <section class="fav-wrap" aria-labelledby="favTitle">
+      <div class="fav-head">
+        <h1 id="favTitle" class="fav-title">즐겨찾기</h1>
+
+        <p class="fav-desc">
+          카오모지(이모티콘), 라인, 텍스트 대치, 이모지, 도트/아스키 아트에서 ★로 즐겨찾기 저장한 항목을 한곳에서 확인하세요.<br>
+          카드를 누르면 복사됩니다. ★를 누르면 즐겨찾기에서 제거됩니다.<br>
+          즐겨찾기는 브라우저의 로컬 스토리지에만 저장됩니다. 쿠키/로컬 스토리지를 삭제하거나 브라우저·기기를 바꾸면 데이터가 초기화됩니다.
+        </p>
+      </div>
+
+      <div class="toolrow">
+        <div class="chips" id="filters">
+          <button class="chip is-active" data-src="all" aria-pressed="true">전체</button>
+          <button class="chip" data-src="Kaomoji" aria-pressed="false">Kaomoji</button>
+          <button class="chip" data-src="Line" aria-pressed="false">Line</button>
+          <button class="chip" data-src="Text Replace" aria-pressed="false">Text Replace</button>
+          <button class="chip" data-src="Emoji" aria-pressed="false">Emoji</button>
+          <button class="chip" data-src="DotASCII" aria-pressed="false">DotASCII</button>
+        </div>
+      </div>
+
+      <section id="grid" aria-live="polite"></section>
+      <div id="empty" class="empty">아직 즐겨찾기가 없습니다.</div>
+
+      <!-- Infeed Ad -->
+      <div class="infeed" aria-label="스폰서 광고" style="grid-column:1 / -1">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-4324510515730355"
+             data-ad-slot="9132817506"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+      </div>
+    </section>
+
+    <!-- Quick access -->
+    <section class="quick-wrap" aria-labelledby="quickTitle">
+      <div class="quick-head">
+        <svg class="mi" viewBox="0 0 24 24" aria-hidden="true">
+          <path class="fill" d="M12 2l2 4 4 .7-3 3 .7 4L12 12l-3.7 1.7.7-4-3-3L10 6z"></path>
+          <path class="stroke" d="M12 2l2 4 4 .7-3 3 .7 4L12 12l-3.7 1.7.7-4-3-3L10 6z"></path>
+        </svg>
+        <h2 id="quickTitle" style="margin:0;font:inherit">바로가기</h2>
+      </div>
+      <section class="quick">
+        <a class="panel quick-item" href="./index.html" style="text-align:center;padding:16px">
+          <svg class="mi big" viewBox="0 0 24 24" aria-hidden="true"><path class="stroke" d="M3 10.5L12 4l9 6.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a 1 1 0 0 1-1-1z"/></svg>
+          <div style="margin-top:8px;font-weight:600">홈</div>
+        </a>
+        <a class="panel quick-item" href="./kaomoji.html" style="text-align:center;padding:16px">
+          <svg class="mi big" viewBox="0 0 24 24" aria-hidden="true">
+            <circle class="stroke" cx="12" cy="12" r="8.5"/>
+            <circle class="stroke" cx="9" cy="11" r="1"/>
+            <path class="stroke" d="M14.5 11.2h1.6"/>
+            <path class="stroke" d="M8.8 15c1.6 1.2 4.8 1.2 6.4 0"/>
+          </svg>
+          <div style="margin-top:8px;font-weight:600">카오모지</div>
+        </a>
+        <a class="panel quick-item" href="./line.html" style="text-align:center;padding:16px">
+          <svg class="mi big" viewBox="0 0 24 24" aria-hidden="true">
+            <path class="stroke" d="M4.5 6.5h15v8.2a3 3 0 0 1-3 3H11l-3.8 3v-3H7.5a3 3 0 0 1-3-3z"/>
+          </svg>
+          <div style="margin-top:8px;font-weight:600">라인</div>
+        </a>
+        <a class="panel quick-item" href="./replace.html" style="text-align:center;padding:16px">
+          <svg class="mi big" viewBox="0 0 24 24" aria-hidden="true">
+            <rect class="stroke" x="3" y="5" width="8" height="14" rx="2"/>
+            <path class="stroke" d="M5.5 15h4M7.5 9l1.5 4"/>
+            <path class="stroke" d="M13 12h8"/>
+            <path class="stroke" d="M18 7l3 3-3 3"/>
+          </svg>
+          <div style="margin-top:8px;font-weight:600">텍스트 대치</div>
+        </a>
+        <a class="panel quick-item" href="./emoji.html" style="text-align:center;padding:16px">
+          <svg class="mi big" viewBox="0 0 24 24" aria-hidden="true">
+            <circle class="stroke" cx="12" cy="12" r="8.5"/>
+            <circle class="stroke" cx="9" cy="10" r="1"/>
+            <circle class="stroke" cx="15" cy="10" r="1"/>
+            <path class="stroke" d="M8.5 14.5c2 1.8 5 1.8 7 0"/>
+          </svg>
+          <div style="margin-top:8px;font-weight:600">이모지</div>
+        </a>
+        <a class="panel quick-item" href="./dotart.html" style="text-align:center;padding:16px">
+          <svg class="mi big" viewBox="0 0 24 24" aria-hidden="true">
+            <circle class="stroke" cx="7" cy="7" r="1.2"/><circle class="stroke" cx="12" cy="7" r="1.2"/><circle class="stroke" cx="17" cy="7" r="1.2"/>
+            <circle class="stroke" cx="7" cy="12" r="1.2"/><circle class="stroke" cx="12" cy="12" r="1.2"/><circle class="stroke" cx="17" cy="12" r="1.2"/>
+          </svg>
+          <div style="margin-top:8px;font-weight:600">도트 아트 / 아스키 아트</div>
+        </a>
+        <a class="panel quick-item" href="./fonts.html" style="text-align:center;padding:16px">
+          <svg class="mi big" viewBox="0 0 24 24" aria-hidden="true">
+            <path class="stroke" d="M4 18h4l2-5h4l2 5h4"/>
+            <path class="stroke" d="M10 13l2-7 2 7"/>
+          </svg>
+          <div style="margin-top:8px;font-weight:600">폰트</div>
+        </a>
+        <a class="panel quick-item" href="./username.html" style="text-align:center;padding:16px">
+          <svg class="mi big" viewBox="0 0 24 24" aria-hidden="true">
+            <rect class="stroke" x="3" y="6" width="18" height="12" rx="2"/>
+            <circle class="stroke" cx="8.5" cy="12" r="2"/>
+            <path class="stroke" d="M12.5 10h6M12.5 13h6M12.5 16h4"/>
+          </svg>
+          <div style="margin-top:8px;font-weight:600">아이디 생성기</div>
+        </a>
+        <a class="panel quick-item" href="./favorites.html" aria-current="page" style="text-align:center;padding:16px">
+          <svg class="mi big" viewBox="0 0 24 24" aria-hidden="true">
+            <path class="stroke" d="M12 3.5l2.4 4.9 5.4.8-3.9 3.9.9 5.5L12 16.9 7.2 18.6l.9-5.5L4.2 9.2l5.4-.8z"/>
+          </svg>
+          <div style="margin-top:8px;font-weight:600">즐겨찾기</div>
+        </a>
+        <a class="panel quick-item" href="./settings.html" style="text-align:center;padding:16px">
+          <svg class="mi big" viewBox="0 0 24 24" aria-hidden="true">
+            <circle class="stroke" cx="12" cy="12" r="7.5"/>
+            <circle class="stroke" cx="12" cy="12" r="2.5"/>
+            <path class="stroke" d="M12 3.5v3M20.5 12h-3M12 20.5v-3M3.5 12h3M17.4 6.6l-2.1 2.1M17.4 17.4l-2.1-2.1M6.6 17.4l2.1-2.1M6.6 6.6l2.1 2.1"/>
+          </svg>
+          <div style="margin-top:8px;font-weight:600">설정</div>
+        </a>
+      </section>
+    </section>
+
+    <!-- Ad after Quick access -->
+    <div class="infeed only-desktop" aria-label="스폰서 광고">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-4324510515730355"
+           data-ad-slot="9132817506"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <div class="infeed only-mobile" aria-label="스폰서 광고">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-4324510515730355"
+           data-ad-slot="9132817506"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+    </div>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+  </main>
+
+  <footer>
+    <div class="wrap f-inner">
+      <nav>
+        <a href="./privacy.html">개인정보 처리방침</a> · <a href="./terms.html">이용약관</a> · <a href="./contact.html">문의</a>
+      </nav>
+      <small>© 2025 Cute CopyMoji. All rights reserved.</small>
+    </div>
+  </footer>
+
+  <button onclick="window.scrollTo({top:0,behavior:'smooth'})" id="topBtn" class="fab" title="맨 위로">↑</button>
+  <button onclick="if(navigator.share){navigator.share({title:'Cute CopyMoji',url:location.href});}else{navigator.clipboard&&navigator.clipboard.writeText(location.href).then(()=>alert('링크가 복사되었습니다!'));}" id="shareBtn" class="fab" title="공유">↗</button>
+
+  <script>
+  (function(){
+    function syncThemeColor(){
+      const hex = getComputedStyle(document.documentElement).getPropertyValue('--chrome').trim() || '#ffffff';
+      let meta = document.querySelector('meta[name="theme-color"]:not([media])');
+      if(!meta){ meta = document.createElement('meta'); meta.setAttribute('name','theme-color'); document.head.appendChild(meta); }
+      meta.setAttribute('content', hex);
+    }
+    syncThemeColor();
+    document.addEventListener('change', function(e){
+      if(e.target && e.target.matches('input[name="t"][data-ccm-theme]')) setTimeout(syncThemeColor, 0);
+    });
+    window.addEventListener('DOMContentLoaded', syncThemeColor);
+  })();
+  </script>
+
+  <div id="toast" class="toast" role="status" aria-live="polite">복사됨!</div>
+
+  <script>
+  (function(){
+    const $ = (s,el=document)=>el.querySelector(s);
+    const $$ = (s,el=document)=>Array.from(el.querySelectorAll(s));
+    const EL = { grid:$('#grid'), empty:$('#empty'), filters:$('#filters') };
+
+    // Known favorite stores (keys)
+    const KNOWN = [
+      {key:'emo.favs.v1',   label:'Kaomoji',     href:'./kaomoji.html'},
+      {key:'line.favs.v1',  label:'Line',        href:'./line.html'},
+      {key:'replace.favs.v1', label:'Text Replace', href:'./replace.html'},
+      {key:'emoji.favs.v1', label:'Emoji',       href:'./emoji.html'},
+      {key:'dotascii.favs.v1',   label:'DotASCII', href:'./dotart.html'},
+    ];
+
+    function detectStores(){
+      const stores = new Map(KNOWN.map(o=>[o.key,o]));
+      try{
+        for(let i=0;i<localStorage.length;i++){
+          const k = localStorage.key(i);
+          if(!/\.favs\.v1$/.test(k)) continue;
+          if(!stores.has(k)){
+            const label = k.replace(/\..*$/, '').replace(/\b\w/g,c=>c.toUpperCase());
+            stores.set(k,{key:k,label,href:'#'});
+          }
+        }
+      }catch(e){}
+      return Array.from(stores.values());
+    }
+
+    function loadFavsByKey(key){
+      try{
+        const raw = JSON.parse(localStorage.getItem(key) || '[]');
+        const toText = (v)=> (v==null) ? '' :
+          (typeof v === 'string' ? v :
+          (typeof v.t === 'string' ? v.t :
+          (typeof v.text === 'string' ? v.text :
+          (typeof v.value === 'string' ? v.value : String(v)))));
+        return raw.map(toText).filter(Boolean);
+      }catch(e){ return []; }
+    }
+
+    function aggregate(){
+      const stores = detectStores();
+      const map = new Map(); // text -> {text, sources:Set<label>}
+      for(const st of stores){
+        const arr = loadFavsByKey(st.key);
+        for(const t of arr){
+          const key = t;
+          if(!map.has(key)) map.set(key,{text:t, sources:new Set()});
+          map.get(key).sources.add(st.label);
+        }
+      }
+      const items = Array.from(map.values()).map(o=>({text:o.text, sources:Array.from(o.sources).sort()}));
+      items.sort((a,b)=> a.text.localeCompare(b.text));
+      return { items, stores };
+    }
+
+    async function copy(text){
+      try{ await navigator.clipboard.writeText(text); }catch(e){}
+      showToast('복사됨!');
+    }
+    function showToast(msg){
+      const t = document.getElementById('toast'); t.textContent = msg; t.classList.add('show');
+      clearTimeout(showToast._t); showToast._t = setTimeout(()=>t.classList.remove('show'), 1000);
+    }
+
+    function removeFromAll(text){
+      const stores = detectStores();
+      for(const st of stores){
+        try{
+          const arr = loadFavsByKey(st.key);
+          const idx = arr.indexOf(text);
+          if(idx >= 0){
+            arr.splice(idx,1);
+            localStorage.setItem(st.key, JSON.stringify(arr));
+          }
+        }catch(e){}
+      }
+    }
+
+    function makeCard(it){
+      const card = document.createElement('button'); card.type='button'; card.className='card'; card.title='누르면 복사';
+      const text = document.createElement('div'); text.className='t'; text.textContent = it.text;
+      const isDot = (it.sources||[]).includes('DotASCII');
+      if(isDot){ card.classList.add('is-dot'); text.classList.add('t-dot'); }
+      const star = document.createElement('button'); star.type='button'; star.className='star'; star.textContent='★'; star.title='모든 즐겨찾기에서 제거';
+      const badges = document.createElement('div'); badges.className='badges';
+      it.sources.forEach(s=>{ const b=document.createElement('span'); b.className='badge'; b.textContent=s; badges.appendChild(b); });
+      card.append(star,text,badges);
+      card.addEventListener('click',()=>copy(it.text));
+      star.addEventListener('click',(e)=>{ e.stopPropagation(); removeFromAll(it.text); render(); });
+      return card;
+    }
+
+    function makeAdSlot(){
+      const wrap = document.createElement('div');
+      wrap.className = 'infeed';
+      wrap.setAttribute('aria-label','스폰서 광고');
+      wrap.style.gridColumn = '1 / -1';
+      const ins = document.createElement('ins');
+      ins.className = 'adsbygoogle';
+      ins.style.display = 'block';
+      ins.setAttribute('data-ad-client','ca-pub-4324510515730355');
+      ins.setAttribute('data-ad-slot','9132817506');
+      ins.setAttribute('data-ad-format','auto');
+      ins.setAttribute('data-full-width-responsive','true');
+      wrap.appendChild(ins);
+      setTimeout(()=>{ try{ (adsbygoogle = window.adsbygoogle || []).push({}); }catch(e){} }, 0);
+      return wrap;
+    }
+
+    function render(){
+      const { items, stores } = aggregate();
+      // rebuild filter chips (labels only; data-src는 영문 유지)
+      $$('#filters .chip').forEach(ch=>{
+        const k = ch.dataset.src;
+        ch.disabled = false;
+        ch.textContent = (k==='all') ? '전체' : k;
+      });
+
+      const active = ($$('#filters .chip').find(b=>b.classList.contains('is-active'))?.dataset.src) || 'all';
+      const filtered = items.filter(it => (active==='all') || it.sources.includes(active));
+
+      EL.grid.innerHTML='';
+      if(filtered.length===0){ EL.empty.style.display='block'; return; }
+      EL.empty.style.display='none';
+      const frag = document.createDocumentFragment();
+
+      const isMobile = window.matchMedia('(max-width:1023px)').matches;
+      const STEP = isMobile ? 12 : 9;
+      const MAX  = 3;
+      let adCount = 0;
+
+      filtered.forEach((it, i) => {
+        frag.appendChild(makeCard(it));
+        if (((i+1) % STEP === 0) && adCount < MAX) {
+          frag.appendChild(makeAdSlot());
+          adCount++;
+        }
+      });
+
+      EL.grid.appendChild(frag);
+      try{ (adsbygoogle = window.adsbygoogle || []).push({}); }catch(e){}
+    }
+
+    EL.filters.addEventListener('click',(e)=>{
+      const b = e.target.closest('.chip'); if(!b) return;
+      $$('#filters .chip').forEach(x=>x.classList.toggle('is-active', x===b));
+      $$('#filters .chip').forEach(x=>x.setAttribute('aria-pressed', String(x===b)));
+      render();
+    });
+
+    window.addEventListener('DOMContentLoaded', render);
+    window.addEventListener('storage', render);
+  })();
+  </script>
+</body>
+</html>
