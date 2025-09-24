@@ -27,7 +27,7 @@ window.USERNAME_TEMPLATES = [
   "♡₊˚ ・₊name₊˚ ・₊✧",
   "｡*⭒⑅name⑅⭒*｡",
   "ෆ˚⋆୨name୧⋆˚ෆ",
-  "ིྀ𝜗ৎ🐼𝒏𝒂𝒎𝒆🐼ྀི𝜗ৎ",
+  "ིྀ𝜗ৎ🐼name🐼ྀི𝜗ৎ",
   "⟡ {text} ⟡",
   "ミ☆ {name} ☆彡",
   "⊹ {text} ⊹",
