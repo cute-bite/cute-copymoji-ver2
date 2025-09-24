@@ -424,7 +424,7 @@ const DEFAULT_ITEMS = [
 { t:'(⸝⸝• ༝ •⸝⸝)', l:'Shy Face', g:['kaomoji','cute','shy'] },
 { t:'₍ᐢᐢ₎', l:'Bunny Ears', g:['kaomoji','bunny','cute'] },
 { t:'₍ᐢ•༝•ᐢ₎', l:'Puppy Round', g:['kaomoji','puppy','cute'] },
-{ t:'ᥥ ᥥ ( • ༝ • )', l:'Dot Frame Face', g:['kaomoji','cute','pretty'] },
+{ t:'( • ༝ • )', l:'Dot Frame Face', g:['kaomoji','cute','pretty'] },
 { t:'₍ᐢ ･ ༝ ･ ᐢ₎', l:'Puppy Cute', g:['kaomoji','puppy','cute'] },
 { t:'ᕱᕱ ྀི', l:'Bunny Tiny', g:['kaomoji','bunny','cute'] },
 { t:'／(･ × ･)＼', l:'Cat Hands Up', g:['kaomoji','cat','cute'] },
@@ -731,7 +731,6 @@ const DEFAULT_ITEMS = [
 {t:'𐔌՞. .՞𐦯', l:'Shy Bunny', g:['kaomoji','animal','rabbit']},
 {t:'ㅤ ׅ 𝄂𝄚𝅦𝄚𝄞𝅄ㅤ', l:'Music Notes', g:['decor','music','symbol']},
 {t:'ᶠᶸᶜᵏᵧₒᵤ!', l:'Profanity Text', g:['text','explicit']},
-{t:'𔓘', l:'Symbol Deco 1', g:['decor','symbol']},
 {t:'₍^. .^₎⟆', l:'Cat Face', g:['kaomoji','animal','cat']},
 {t:'⋆ ⌇', l:'Star Divider', g:['decor','symbol','line']},
 
