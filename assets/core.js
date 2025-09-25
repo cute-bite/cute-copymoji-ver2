@@ -197,3 +197,81 @@
 
 })();
 
+  // 광고 변경
+
+(() => {
+  const AD_TEMPLATE_URL = '/ad-infeed.html';
+  let adTemplateHTML = null;
+
+  async function getAdTemplate() {
+    if (adTemplateHTML) return adTemplateHTML;
+    const resp = await fetch(AD_TEMPLATE_URL, { credentials: 'same-origin', cache: 'no-store' });
+    if (!resp.ok) throw new Error('Failed to fetch ad template: ' + resp.status);
+    adTemplateHTML = await resp.text();
+    return adTemplateHTML;
+  }
+
+  function initIns(ins) {
+    if (!ins || ins.dataset.adInit === '1') return;
+    try {
+      (window.adsbygoogle = window.adsbygoogle || []).push({});
+      ins.dataset.adInit = '1';
+    } catch (e) {
+      console.warn('AdSense push() failed:', e);
+    }
+  }
+
+  async function replaceAllInfeeds() {
+    let html;
+    try {
+      html = await getAdTemplate();
+    } catch (e) {
+      console.warn('ad-infeed.html load failed:', e);
+      return;
+    }
+
+    // .infeed 컨테이너들을 전부 템플릿으로 교체하고 초기화
+    document.querySelectorAll('.infeed').forEach(container => {
+      // 이미 처리했다면 내부 ins만 다시 점검
+      if (container.dataset.adProcessed === '1') {
+        container.querySelectorAll('ins.adsbygoogle').forEach(initIns);
+        return;
+      }
+      container.innerHTML = html;
+      container.dataset.adProcessed = '1';
+      container.querySelectorAll('ins.adsbygoogle').forEach(initIns);
+    });
+  }
+
+  // 동적으로 DOM이 바뀌는(더보기/탭 전환 등) 경우를 대비해 감시
+  function observeDomForAds() {
+    const mo = new MutationObserver(mutations => {
+      for (const m of mutations) {
+        for (const node of m.addedNodes) {
+          if (!(node instanceof Element)) continue;
+          if (node.matches && node.matches('.infeed')) {
+            replaceAllInfeeds();
+          } else if (node.querySelector && node.querySelector('.infeed, ins.adsbygoogle')) {
+            replaceAllInfeeds();
+          }
+        }
+      }
+    });
+    mo.observe(document.documentElement, { childList: true, subtree: true });
+  }
+
+  window.addEventListener('DOMContentLoaded', () => {
+    replaceAllInfeeds();
+    observeDomForAds();
+
+    // 페이지에 appendMore(더보기) 함수가 있으면, 실행 후 재초기화
+    if (typeof window.appendMore === 'function') {
+      const _orig = window.appendMore;
+      window.appendMore = async function(...args) {
+        const result = await _orig.apply(this, args);
+        replaceAllInfeeds();
+        return result;
+      };
+    }
+  });
+})();
