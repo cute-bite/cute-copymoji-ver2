@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="ko">
 <head>
@@ -247,16 +248,12 @@
 
       <div class="morebar"><button id="loadMoreBtn" type="button">더 보기</button></div>
 
-      <!-- Ad block after kaomoji content -->
-      <div class="infeed" aria-label="스폰서 광고" style="grid-column:1 / -1">
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-4324510515730355"
-             data-ad-slot="9132817506"
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
-      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-      </div>
+
+      <!-- 광고 -->
+<div class="infeed"></div>
+
+
+
     </section>
 
     <!-- Quick access (no ads inside; inner bottom gap removed above) -->
@@ -375,28 +372,9 @@
 
 </section>
 
-<!-- slot_end -->
-<div class="infeed only-desktop" aria-label="스폰서 광고">
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-4324510515730355"
-       data-ad-slot="9132817506"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
-  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-</div>
 
 
-    <!-- 모바일 전용 광고 자리 -->
-<div class="infeed only-mobile" aria-label="스폰서 광고">
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-4324510515730355"
-       data-ad-slot="9132817506"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
-</div>
-<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
 
   </main>
 
@@ -507,22 +485,29 @@
     });
     return card;
   }
+
   function makeAdSlot(){
-    const box = document.createElement('div');
-    box.className = 'infeed';
-    box.style.gridColumn = '1 / -1';
-    box.setAttribute('aria-label','스폰서 광고');
-    const ins = document.createElement('ins');
-    ins.className = 'adsbygoogle';
-    ins.style.display = 'block';
-    ins.setAttribute('data-ad-client','ca-pub-4324510515730355');
-    ins.setAttribute('data-ad-slot','6633850514');
-    ins.setAttribute('data-ad-format','auto');
-    ins.setAttribute('data-full-width-responsive','true');
-    box.appendChild(ins);
-    setTimeout(()=>{ try{ (adsbygoogle = window.adsbygoogle || []).push({}); }catch(e){} }, 0);
-    return box;
-  }
+  const box = document.createElement('div');
+  box.className = 'infeed';
+  box.style.gridColumn = '1 / -1';
+  box.setAttribute('aria-label','스폰서 광고');
+
+  const ins = document.createElement('ins');
+  ins.className = 'adsbygoogle';
+  ins.style.display = 'block';
+
+  // 인피드 전용 설정(네 계정 값)
+  ins.setAttribute('data-ad-client','ca-pub-4324510515730355');
+  ins.setAttribute('data-ad-slot','1978793748');            // 인피드 전용 슬롯
+  ins.setAttribute('data-ad-format','fluid');               // 인피드 필수
+  ins.setAttribute('data-ad-layout-key','-72+ed+2g-1n-4q'); // 네 layout-key
+
+  box.appendChild(ins);
+  setTimeout(()=>{ try{ (window.adsbygoogle = window.adsbygoogle || []).push({}); }catch(e){} }, 0);
+  return box;
+}
+
+
   function getCols(){
     const cs = getComputedStyle($grid);
     const cols = cs.gridTemplateColumns.split(' ').filter(Boolean).length || 2;
@@ -568,7 +553,7 @@
   }
 
   window.addEventListener('DOMContentLoaded', () => {
-    try{ (adsbygoogle = window.adsbygoogle || []).push({}); }catch(e){}
+
     resetAndRender();
     document.getElementById('loadMoreBtn')?.addEventListener('click', appendMore);
   });
@@ -703,23 +688,7 @@
       return card;
     }
 
-    function makeAd(){
-      const wrap = document.createElement('div');
-      wrap.className = 'infeed';
-      wrap.style.gridColumn = '1 / -1';
-      wrap.setAttribute('aria-label','스폰서 광고');
-      const ins = document.createElement('ins');
-      ins.className = 'adsbygoogle';
-      ins.style.display = 'block';
-      ins.setAttribute('data-ad-client','ca-pub-4324510515730355'); // slot_mid
-      ins.setAttribute('data-ad-slot','6633850514'); // slot_mid
-      ins.setAttribute('data-ad-format','auto');
-      ins.setAttribute('data-full-width-responsive','true');
-      wrap.appendChild(ins);
-      // init
-      try{ (window.adsbygoogle=window.adsbygoogle||[]).push({}); }catch(e){}
-      return wrap;
-    }
+
 
     function renderPage(){
       const arr = state.items;
@@ -732,14 +701,14 @@
       for(let i=start;i<end;i++){
         // Insert ad at cadence (content-only count)
         if(every && ((state.insertedAds + countInThisPage) > 0) && ((state.insertedAds + countInThisPage) % every === 0)){
-          grid.appendChild(makeAd());
+          grid.appendChild(makeAdSlot());
         }
         grid.appendChild(makeCard(arr[i]));
         countInThisPage++;
       }
       // push one more ad if page ends exactly on cadence boundary
       if(every && ((state.insertedAds + countInThisPage) > 0) && ((state.insertedAds + countInThisPage) % every === 0)){
-        grid.appendChild(makeAd());
+        grid.appendChild(makeAdSlot());
       }
       state.insertedAds += countInThisPage;
       return end < arr.length;
