@@ -566,7 +566,7 @@ html[data-theme="dark"] .star.is-active {
 .legal-note { font-size: 0.9em; color: #666; margin-top: 1em; }
 
 .infeed { text-align: center; }
-+ .infeed ins.adsbygoogle { display: block !important; width: 100%; }
+.infeed ins.adsbygoogle { display: block !important; width: 100%; }
 
 /* username.html에서만 즐겨찾기 버튼 숨기기 */
 body:has(.nav a[aria-current="page"][href$="username.html"]) .fav-btn {
@@ -575,3 +575,10 @@ body:has(.nav a[aria-current="page"][href$="username.html"]) .fav-btn {
 
 .infeed { min-width: 250px; }          /* 초기 0폭 방지 보조 */
 .infeed ins.adsbygoogle { display:block; width:100%; }
+
+/* Load more 바로 위의 인피드는 표시 안 함 (자리도 없음) */
+.infeed:has(+ #loadMoreBtn),
+.infeed:has(+ .load-more),
+.infeed:has(+ [data-load-more]) {
+  display: none !important;
+}
