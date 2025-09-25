@@ -211,15 +211,57 @@
     return adTemplateHTML;
   }
 
-  function initIns(ins) {
-    if (!ins || ins.dataset.adInit === '1') return;
+function initIns(ins) {
+  if (!ins) return;
+
+  // 이미 초기화된 슬롯은 스킵
+  if (ins.getAttribute('data-adsbygoogle-status') === 'done') return;
+  if (ins.dataset.adInit === '1') return;
+
+  const visible = () => {
+    const cs = getComputedStyle(ins);
+    return ins.offsetWidth > 0 && cs.display !== 'none' && cs.visibility !== 'hidden';
+  };
+
+  const doInit = () => {
     try {
       (window.adsbygoogle = window.adsbygoogle || []).push({});
       ins.dataset.adInit = '1';
     } catch (e) {
       console.warn('AdSense push() failed:', e);
     }
+  };
+
+  // only-desktop / only-mobile 컨테이너면 현재 뷰포트에 맞는 쪽만 초기화
+  const box = ins.closest('.infeed');
+  if (box) {
+    if (box.classList.contains('only-desktop') && matchMedia('(max-width:1023px)').matches) return;
+    if (box.classList.contains('only-mobile')  && matchMedia('(min-width:1024px)').matches) return;
   }
+
+  if (visible()) { doInit(); return; }
+
+  // 보일 때까지 관찰
+  let tries = 0;
+  const ro = new ResizeObserver(() => {
+    if (visible()) { ro.disconnect(); doInit(); }
+  });
+  try { ro.observe(ins); } catch {}
+
+  const io = ('IntersectionObserver' in window) ? new IntersectionObserver((ents)=>{
+    if (ents.some(e=>e.isIntersecting) && visible()) { io.disconnect(); doInit(); }
+  }) : null;
+  if (io) io.observe(ins);
+
+  // 백업 타이머 (~6초)
+  const tick = () => {
+    if (ins.dataset.adInit === '1' || ins.getAttribute('data-adsbygoogle-status') === 'done') return;
+    if (visible()) return doInit();
+    if (tries++ < 40) setTimeout(tick, 150);
+  };
+  tick();
+}
+
 
   async function replaceAllInfeeds() {
     let html;
