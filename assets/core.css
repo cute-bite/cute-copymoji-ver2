@@ -361,10 +361,11 @@ details.faq .a{ margin-top:8px; }
 
 
 @media (max-width:480px){
-  .infeed:has(ins.adsbygoogle){ min-height:140px; }
-}
+.infeed:has(ins.adsbygoogle){ min-height:120px; }  /* 120~130 추천 */
+ }
+
 @media (min-width:481px) and (max-width:1024px){
-  .infeed:has(ins.adsbygoogle){ min-height:180px; }
+  .infeed:has(ins.adsbygoogle){ min-height:160px; }  /* 살짝만 다운 */
 }
 
 
@@ -565,7 +566,7 @@ html[data-theme="dark"] .star.is-active {
 .legal-note { font-size: 0.9em; color: #666; margin-top: 1em; }
 
 .infeed { text-align: center; }
-.infeed ins.adsbygoogle { display: inline-block !important; }
++ .infeed ins.adsbygoogle { display: block !important; width: 100%; }
 
 /* username.html에서만 즐겨찾기 버튼 숨기기 */
 body:has(.nav a[aria-current="page"][href$="username.html"]) .fav-btn {
