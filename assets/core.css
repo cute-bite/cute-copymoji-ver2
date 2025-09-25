@@ -571,3 +571,6 @@ html[data-theme="dark"] .star.is-active {
 body:has(.nav a[aria-current="page"][href$="username.html"]) .fav-btn {
   display: none !important;
 }
+
+.infeed { min-width: 250px; }          /* 초기 0폭 방지 보조 */
+.infeed ins.adsbygoogle { display:block; width:100%; }

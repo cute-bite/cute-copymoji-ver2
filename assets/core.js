@@ -198,103 +198,93 @@
 })();
 
   // 광고 변경
-
+<!-- core.js의 // 광고 변경 블록을 이걸로 통째 교체 -->
+<script>
 (() => {
   const AD_TEMPLATE_URL = '/ad-infeed.html';
   let adTemplateHTML = null;
+  let _adTick;
+
+  function safeReplaceAllInfeeds(){ clearTimeout(_adTick); _adTick = setTimeout(replaceAllInfeeds, 50); }
 
   async function getAdTemplate() {
     if (adTemplateHTML) return adTemplateHTML;
-    const resp = await fetch(AD_TEMPLATE_URL, { credentials: 'same-origin', cache: 'no-store' });
+    // 캐시 바스터로 항상 200 받도록
+    const url = `${AD_TEMPLATE_URL}?v=${Date.now()}`;
+    const resp = await fetch(url, { credentials: 'same-origin', cache: 'no-store' });
     if (!resp.ok) throw new Error('Failed to fetch ad template: ' + resp.status);
-    adTemplateHTML = await resp.text();
+    adTemplateHTML = (await resp.text()).trim();
     return adTemplateHTML;
   }
 
-function initIns(ins) {
-  if (!ins) return;
+  function initIns(ins) {
+    if (!ins) return;
+    // 중복 초기화 가드
+    if (ins.getAttribute('data-adsbygoogle-status') === 'done') return;
+    if (ins.dataset.adInit === '1') return;
 
-  // 이미 초기화된 슬롯은 스킵
-  if (ins.getAttribute('data-adsbygoogle-status') === 'done') return;
-  if (ins.dataset.adInit === '1') return;
+    const visible = () => {
+      const cs = getComputedStyle(ins);
+      return ins.offsetWidth > 0 && cs.display !== 'none' && cs.visibility !== 'hidden';
+    };
 
-  const visible = () => {
-    const cs = getComputedStyle(ins);
-    return ins.offsetWidth > 0 && cs.display !== 'none' && cs.visibility !== 'hidden';
-  };
+    const doInit = () => {
+      try {
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
+        ins.dataset.adInit = '1';
+      } catch (e) {
+        console.warn('AdSense push() failed:', e);
+      }
+    };
 
-  const doInit = () => {
-    try {
-      (window.adsbygoogle = window.adsbygoogle || []).push({});
-      ins.dataset.adInit = '1';
-    } catch (e) {
-      console.warn('AdSense push() failed:', e);
+    // only-desktop / only-mobile 분기
+    const box = ins.closest('.infeed');
+    if (box) {
+      if (box.classList.contains('only-desktop') && matchMedia('(max-width:1023px)').matches) return;
+      if (box.classList.contains('only-mobile')  && matchMedia('(min-width:1024px)').matches) return;
     }
-  };
 
-  // only-desktop / only-mobile 컨테이너면 현재 뷰포트에 맞는 쪽만 초기화
-  const box = ins.closest('.infeed');
-  if (box) {
-    if (box.classList.contains('only-desktop') && matchMedia('(max-width:1023px)').matches) return;
-    if (box.classList.contains('only-mobile')  && matchMedia('(min-width:1024px)').matches) return;
+    if (visible()) { doInit(); return; }
+
+    // 보일 때까지 대기 (레이아웃/스크롤/리사이즈 반영 후)
+    const ro = new ResizeObserver(() => { if (visible()) { ro.disconnect(); doInit(); } });
+    try { ro.observe(ins); } catch {}
+
+    const io = ('IntersectionObserver' in window)
+      ? new IntersectionObserver((ents)=>{ if (ents.some(e=>e.isIntersecting) && visible()) { io.disconnect(); doInit(); } })
+      : null;
+    if (io) io.observe(ins);
+
+    // 백업 타이머 (~6초)
+    let tries = 0;
+    (function tick(){
+      if (ins.dataset.adInit === '1' || ins.getAttribute('data-adsbygoogle-status') === 'done') return;
+      if (visible()) return doInit();
+      if (tries++ < 40) setTimeout(tick, 150);
+    })();
   }
-
-  if (visible()) { doInit(); return; }
-
-  // 보일 때까지 관찰
-  let tries = 0;
-  const ro = new ResizeObserver(() => {
-    if (visible()) { ro.disconnect(); doInit(); }
-  });
-  try { ro.observe(ins); } catch {}
-
-  const io = ('IntersectionObserver' in window) ? new IntersectionObserver((ents)=>{
-    if (ents.some(e=>e.isIntersecting) && visible()) { io.disconnect(); doInit(); }
-  }) : null;
-  if (io) io.observe(ins);
-
-  // 백업 타이머 (~6초)
-  const tick = () => {
-    if (ins.dataset.adInit === '1' || ins.getAttribute('data-adsbygoogle-status') === 'done') return;
-    if (visible()) return doInit();
-    if (tries++ < 40) setTimeout(tick, 150);
-  };
-  tick();
-}
-
 
   async function replaceAllInfeeds() {
     let html;
-    try {
-      html = await getAdTemplate();
-    } catch (e) {
-      console.warn('ad-infeed.html load failed:', e);
-      return;
-    }
+    try { html = await getAdTemplate(); }
+    catch (e) { console.warn('ad-infeed.html load failed:', e); return; }
 
-    // .infeed 컨테이너들을 전부 템플릿으로 교체하고 초기화
     document.querySelectorAll('.infeed').forEach(container => {
-      // 이미 처리했다면 내부 ins만 다시 점검
-      if (container.dataset.adProcessed === '1') {
-        container.querySelectorAll('ins.adsbygoogle').forEach(initIns);
-        return;
+      if (container.dataset.adProcessed !== '1') {
+        container.innerHTML = html;
+        container.dataset.adProcessed = '1';
       }
-      container.innerHTML = html;
-      container.dataset.adProcessed = '1';
       container.querySelectorAll('ins.adsbygoogle').forEach(initIns);
     });
   }
 
-  // 동적으로 DOM이 바뀌는(더보기/탭 전환 등) 경우를 대비해 감시
   function observeDomForAds() {
-    const mo = new MutationObserver(mutations => {
-      for (const m of mutations) {
+    const mo = new MutationObserver(muts => {
+      for (const m of muts) {
         for (const node of m.addedNodes) {
           if (!(node instanceof Element)) continue;
-          if (node.matches && node.matches('.infeed')) {
-            replaceAllInfeeds();
-          } else if (node.querySelector && node.querySelector('.infeed, ins.adsbygoogle')) {
-            replaceAllInfeeds();
+          if (node.matches?.('.infeed') || node.querySelector?.('.infeed, ins.adsbygoogle')) {
+            safeReplaceAllInfeeds();
           }
         }
       }
@@ -305,15 +295,14 @@ function initIns(ins) {
   window.addEventListener('DOMContentLoaded', () => {
     replaceAllInfeeds();
     observeDomForAds();
-
-    // 페이지에 appendMore(더보기) 함수가 있으면, 실행 후 재초기화
     if (typeof window.appendMore === 'function') {
       const _orig = window.appendMore;
       window.appendMore = async function(...args) {
         const result = await _orig.apply(this, args);
-        replaceAllInfeeds();
+        safeReplaceAllInfeeds();
         return result;
       };
     }
   });
 })();
+</script>
