@@ -1,3 +1,6 @@
+---
+---  
+
 <!doctype html>
 <html lang="ko">
 <head>
@@ -398,17 +401,8 @@
           </div>
         </div>
       
-    <!-- In-feed ad under converter -->
-    <div class="infeed under-conv" aria-label="스폰서 광고" style="margin:12px 0">
-      <ins class="adsbygoogle"
-           style="display:block"
-           data-ad-client="ca-pub-4324510515730355"
-           data-ad-slot="6633850514"
-           data-ad-format="auto"
-           data-full-width-responsive="true"></ins>
-      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    </div>
-    </section>
+<!-- 광고 -->
+  {% include ad-infeed.html %}
 
       <!-- Dot Art list -->
       <section id="dotSec" aria-labelledby="dotTitle" class="art-sec">
@@ -546,28 +540,11 @@
 
 </section>
 
-<!-- slot_end -->
-<div class="infeed only-desktop" aria-label="스폰서 광고">
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-4324510515730355"
-       data-ad-slot="9132817506"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
-  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-</div>
+<!-- 광고 -->
+  {% include ad-infeed.html %}
 
 
-    <!-- (예시) 모바일 전용 광고 자리 -->
-<div class="infeed only-mobile" aria-label="스폰서 광고">
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-4324510515730355"
-       data-ad-slot="9132817506"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
-</div>
-<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
 
   </main>
 
@@ -650,22 +627,27 @@
       if(cols<=6) return 24;
       return 28;
     }
-    function makeAd(){
-      const wrap = document.createElement('div');
-      wrap.className = 'infeed';
-      wrap.style.gridColumn = '1 / -1';
-      wrap.setAttribute('aria-label','스폰서 광고');
-      const ins = document.createElement('ins');
-      ins.className = 'adsbygoogle';
-      ins.style.display = 'block';
-      ins.setAttribute('data-ad-client','ca-pub-4324510515730355');
-      ins.setAttribute('data-ad-slot','6633850514'); // slot_mid
-      ins.setAttribute('data-ad-format','auto');
-      ins.setAttribute('data-full-width-responsive','true');
-      wrap.appendChild(ins);
-      try{ (window.adsbygoogle=window.adsbygoogle||[]).push({}); }catch(e){}
-      return wrap;
-    }
+    
+ function makeAd(){
+  const wrap = document.createElement('div');
+  wrap.className = 'infeed';
+  wrap.style.gridColumn = '1 / -1';
+  wrap.setAttribute('aria-label','스폰서 광고');
+
+  const ins = document.createElement('ins');
+  ins.className = 'adsbygoogle';
+  ins.style.display = 'block';
+
+  // 네 인피드 광고 단위 정보
+  ins.setAttribute('data-ad-client','ca-pub-4324510515730355');
+  ins.setAttribute('data-ad-slot','1978793748');                // 인피드 슬롯 번호
+  ins.setAttribute('data-ad-format','fluid');                   // 인피드 전용
+  ins.setAttribute('data-ad-layout-key','-72+ed+2g-1n-4q');     // 네 계정에서 받은 키
+
+  wrap.appendChild(ins);
+  try { (window.adsbygoogle = window.adsbygoogle || []).push({}); } catch(e){}
+  return wrap;
+}
 
     function makeCard(text, isAscii){
       const card = document.createElement('button');
