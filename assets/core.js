@@ -305,4 +305,41 @@
     }
   });
 })();
+
+
+// ① 상단에 URL/캐시 유틸 추가
+const AD_TEMPLATE_URL = '/ad-infeed.html';
+const AD_TEMPLATE_COMPACT_URL = '/ad-infeed-compact.html';
+const _TPL = {};
+async function getTemplate(url){
+  if (_TPL[url]) return _TPL[url];
+  const resp = await fetch(`${url}?v=${Date.now()}`, {credentials:'same-origin', cache:'no-store'});
+  if (!resp.ok) throw new Error('Failed to fetch template: ' + resp.status);
+  _TPL[url] = (await resp.text()).trim();
+  return _TPL[url];
+}
+
+// ② “더보기 앞/뒤인가?” 판별 함수
+function needsCompact(el){
+  const n = el.nextElementSibling, p = el.previousElementSibling;
+  const isLoadMore = (x)=> x && (x.id==='loadMoreBtn' || x.matches('.load-more,[data-load-more]'));
+  return isLoadMore(n) || isLoadMore(p);
+}
+
+// ③ replaceAllInfeeds 안에서 템플릿 선택 주입 (해당 부분만 교체)
+async function replaceAllInfeeds() {
+  document.querySelectorAll('.infeed').forEach(async container => {
+    const compact = needsCompact(container);
+    const html = await getTemplate(compact ? AD_TEMPLATE_COMPACT_URL : AD_TEMPLATE_URL);
+
+    if (container.dataset.adProcessed !== '1' || container.dataset.variant !== (compact?'compact':'default')) {
+      container.innerHTML = html;
+      container.dataset.adProcessed = '1';
+      container.dataset.variant = compact ? 'compact' : 'default';
+      container.classList.toggle('is-compact', compact);
+    }
+    container.querySelectorAll('ins.adsbygoogle').forEach(initIns);
+  });
+}
+
 </script>

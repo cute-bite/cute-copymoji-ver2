@@ -576,9 +576,11 @@ body:has(.nav a[aria-current="page"][href$="username.html"]) .fav-btn {
 .infeed { min-width: 250px; }          /* 초기 0폭 방지 보조 */
 .infeed ins.adsbygoogle { display:block; width:100%; }
 
-/* Load more 바로 위의 인피드는 표시 안 함 (자리도 없음) */
-.infeed:has(+ #loadMoreBtn),
-.infeed:has(+ .load-more),
-.infeed:has(+ [data-load-more]) {
-  display: none !important;
-}
+/* 공통 유지 */
+.infeed { min-width: 250px; }
+.infeed ins.adsbygoogle { display:block !important; width:100%; }
+
+/* 컴팩트 마커(더보기 앞/뒤)에만 예약 높이/여백 ↓ */
+.infeed.is-compact { margin: 8px 0; }
+@media (max-width:480px){ .infeed.is-compact:has(ins.adsbygoogle){ min-height:110px; } }
+@media (min-width:481px) and (max-width:1024px){ .infeed.is-compact:has(ins.adsbygoogle){ min-height:140px; } }
